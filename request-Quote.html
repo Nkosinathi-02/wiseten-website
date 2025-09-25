@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Quote - Wiseten Company</title>
+  <link rel="stylesheet" href="css/request-Quote.css">
+   <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/welding.css">
+    <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
+  <section class="rental-inquiry">
+    <div class="container">
+      <div class="inquiry-content">
+        <h2>Request a Quote</h2>
+        <p>Get competitive pricing for buying or renting equipment</p>
+
+        <!-- Using Web3Forms for professional appearance -->
+        <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms Configuration -->
+          <input type="hidden" name="access_key" value="ea92efde-2d1e-495b-b9ac-eefff12f69ad">
+          <input type="hidden" name="subject" value="New Quote Request - Wiseten Company">
+          <input type="hidden" name="from_name" value="Wiseten Company Quote Form">
+          <input type="hidden" name="botcheck" value="">
+          <input type="hidden" name="redirect" value="/thank-you.html">
+          
+          <!-- Web3Forms Template Options -->
+           <!-- Options: basic, contact, quote, custom -->
+
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Email Address" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="subject" name="project_subject" placeholder="Subject/Project Name" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" id="phone" name="phone" placeholder="Cell Phone Number" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <select id="requestType" name="requestType" required>
+                <option value="">Buy or Rent?</option>
+                <option value="buy">Buy</option>
+                <option value="rent">Rent</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" id="province" name="province" placeholder="Province" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="town" name="town" placeholder="Town/City" required>
+            </div>
+            <div class="form-group">
+              <input type="text" id="company" name="company" placeholder="Company Name (Optional)">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <select id="equipmentCategory" name="equipmentCategory" required>
+              <option value="">Select Equipment Type</option>
+              <option value="welding">Welding Equipment</option>
+              <option value="generators">Generators</option>
+              <option value="plasma">Plasma Cutting</option>
+              <option value="bevelling">Bevelling Equipment</option>
+              <option value="tools">Power Tools</option>
+              <option value="gas">Gas Equipment</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="specificProduct" name="specificProduct" placeholder="Specific product or model" list="productSuggestions" required>
+            <datalist id="productSuggestions"></datalist>
+            <small>Start typing to see suggestions based on the category selected</small>
+          </div>
+
+          <div class="form-group">
+            <textarea id="message" name="message" placeholder="Tell us about your requirements..." rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">Send Quote Request</span>
+            <span class="loading-spinner"></span>
+          </button>
+
+          <div id="formMessage" class="form-message"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('quoteForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const formMessage = document.getElementById('formMessage');
+      const phoneInput = document.getElementById('phone');
+
+      // Phone number validation
+      phoneInput.addEventListener('input', function(e) {
+        // Remove any non-digit characters
+        let phoneNumber = e.target.value.replace(/\D/g, '');
+        
+        // Format the phone number (optional)
+        if (phoneNumber.length > 3 && phoneNumber.length <= 6) {
+          phoneNumber = phoneNumber.replace(/(\d{3})(\d{0,3})/, '$1 $2');
+        } else if (phoneNumber.length > 6) {
+          phoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(\d{0,4})/, '$1 $2 $3');
+        }
+        
+        e.target.value = phoneNumber;
+      });
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          // Basic validation
+          const requiredFields = form.querySelectorAll('[required]');
+          let isValid = true;
+          
+          requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+              isValid = false;
+              field.style.borderColor = 'red';
+            } else {
+              field.style.borderColor = '';
+            }
+          });
+
+          // Phone number validation
+          const phoneValue = phoneInput.value.replace(/\D/g, '');
+          if (phoneValue.length < 10) {
+            isValid = false;
+            phoneInput.style.borderColor = 'red';
+            formMessage.textContent = 'Please enter a valid phone number (at least 10 digits)';
+            formMessage.style.color = 'red';
+          }
+
+          if (!isValid) {
+            e.preventDefault();
+            if (!formMessage.textContent) {
+              formMessage.textContent = 'Please fill in all required fields.';
+              formMessage.style.color = 'red';
+            }
+            return;
+          }
+
+          // Show loading state
+          const btnText = submitBtn.querySelector('.btn-text');
+          const spinner = submitBtn.querySelector('.loading-spinner');
+          
+          btnText.textContent = 'Sending...';
+          spinner.style.display = 'inline-block';
+          submitBtn.disabled = true;
+          formMessage.textContent = '';
+
+          // Form will submit to Web3Forms
+        });
+      }
+
+      // Equipment category suggestions (basic example)
+      const equipmentCategory = document.getElementById('equipmentCategory');
+      const specificProduct = document.getElementById('specificProduct');
+      const productSuggestions = document.getElementById('productSuggestions');
+
+      if (equipmentCategory && specificProduct) {
+        equipmentCategory.addEventListener('change', function() {
+          // Clear previous suggestions
+          productSuggestions.innerHTML = '';
+          
+          // Add suggestions based on category
+          const suggestions = getProductSuggestions(this.value);
+          suggestions.forEach(product => {
+            const option = document.createElement('option');
+            option.value = product;
+            productSuggestions.appendChild(option);
+          });
+        });
+
+        function getProductSuggestions(category) {
+          const suggestions = {
+            welding: ['MIG/MAG Welder 200A', 'TIG Welder AC/DC', 'Stick Welder 300A', 'Multi-process Welder'],
+            generators: ['Silent Generator 5kVA', 'Diesel Generator 50kVA', 'Inverter Generator 3kVA', 'Portable Generator'],
+            plasma: ['Handheld Plasma Cutter', 'CNC Plasma Table', 'Industrial Plasma System'],
+            bevelling: ['Portable Beveller', 'Pipe Bevelling Machine', 'Angle Beveller'],
+            tools: ['Angle Grinder', 'Drill Machine', 'Impact Wrench', 'Circular Saw'],
+            gas: ['Argon Gas Cylinder', 'CO2 Cylinder', 'Gas Regulator', 'Welding Torch']
+          };
+          return suggestions[category] || [];
+        }
+      }
+    });
+  </script>
+   <!-- Footer will be injected here -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+   
+    <script src="js/services.js"></script>
+    <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="js/inheritance.js"></script>
+  <script src="js/contact.js"></script>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('qjGfx8mBOQRwAqx82')
+</script>
+</body>
+</html>

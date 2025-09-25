@@ -409,3 +409,22 @@
         padding: 0 1rem;
     }
 }
+/* Ensure rental-btn styles work for both buttons and anchors */
+.rental-btn {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.rental-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}

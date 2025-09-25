@@ -7,7 +7,6 @@ class PageInheritance {
             'services.html': 'Services',
             'products.html': 'Products',
             'rentals.html': 'Rentals',
-            'brands.html': 'Brands',
             'contact.html': 'Contact Us'
         };
     }

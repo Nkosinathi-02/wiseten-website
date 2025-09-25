@@ -9,8 +9,7 @@ function loadFooter() {
         currentPath.includes('about') ||
         currentPath.includes('services') ||
         currentPath.includes('products') ||
-        currentPath.includes('rentals') ||
-        currentPath.includes('brands')) {
+        currentPath.includes('rentals') ) {
         footerPath = '../components/footer.html';
     } else {
         footerPath = 'components/footer.html';

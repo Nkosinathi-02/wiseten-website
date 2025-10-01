@@ -8,10 +8,146 @@
     <link rel="stylesheet" href="css/generators.css">
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <style>
+        /* Search Engine Styles */
+        .search-engine {
+            padding: 2rem 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(42, 75, 141, 0.3);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .search-results-info {
+            text-align: center;
+            margin: 1rem 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .search-match {
+            animation: pulse 1s ease;
+        }
+        
+        @keyframes pulse {
+            0% { background-color: #fffacd; }
+            100% { background-color: transparent; }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <div id="navbar-container"></div>
+<br/><br/><br/><br/>
+    <!-- Search Engine -->
+    <section class="search-engine">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search generators...">
+                <button id="searchButton" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="search-filters">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="commercial">Commercial</option>
+                </select>
+                <select id="fuelTypeFilter" class="filter-select">
+                    <option value="all">All Fuel Types</option>
+                    <option value="diesel">Diesel</option>
+                    <option value="gas">Natural Gas</option>
+                    <option value="petrol">Petrol</option>
+                    <option value="inverter">Inverter</option>
+                </select>
+                <select id="powerFilter" class="filter-select">
+                    <option value="all">All Power Ranges</option>
+                    <option value="small">Small (1-20kVA)</option>
+                    <option value="medium">Medium (20-200kVA)</option>
+                    <option value="large">Large (200kVA+)</option>
+                </select>
+            </div>
+            <div id="searchResultsInfo" class="search-results-info"></div>
+        </div>
+    </section>
 
     <!-- Category Hero Section -->
     <section class="generators-hero">
@@ -33,13 +169,13 @@
             <h2>Our Generators Range</h2>
             
             <!-- Industrial Generators Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="industrial">
                 <h3 class="category-title">Industrial Generators</h3>
                 <p class="category-description">Heavy-duty generators for manufacturing plants, construction sites, and large-scale operations</p>
                 
                 <div class="products-grid">
                     <!-- Diesel Generators -->
-                    <div class="product-card">
+                    <div class="product-card" data-fuel-type="diesel" data-power="large">
                         <div class="product-image">
                             <img src="images/generators/diesel-generators.jpg" alt="Diesel Generators">
                         </div>
@@ -60,7 +196,7 @@
                     </div>
 
                     <!-- Gas Generators -->
-                    <div class="product-card">
+                    <div class="product-card" data-fuel-type="gas" data-power="large">
                         <div class="product-image">
                             <img src="images/generators/gas-generators.jpg" alt="Gas Generators">
                         </div>
@@ -81,7 +217,7 @@
                     </div>
 
                     <!-- Containerized Generators -->
-                    <div class="product-card">
+                    <div class="product-card" data-fuel-type="diesel" data-power="large">
                         <div class="product-image">
                             <img src="images/generators/containerized-generators.jpg" alt="Containerized Generators">
                         </div>
@@ -102,7 +238,7 @@
                     </div>
 
                     <!-- High Voltage Generators -->
-                    <div class="product-card">
+                    <div class="product-card" data-fuel-type="diesel" data-power="large">
                         <div class="product-image">
                             <img src="images/generators/high-voltage-generators.jpg" alt="High Voltage Generators">
                         </div>
@@ -125,13 +261,13 @@
             </div>
 
             <!-- Commercial Generators Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="commercial">
                 <h3 class="category-title">Commercial Generators</h3>
                 <p class="category-description">Reliable power solutions for businesses, offices, retail, and medium-scale operations</p>
                 
                 <div class="products-grid">
                     <!-- Silent Generators -->
-                    <div class="product-card">
+                    <div class="product-card" data-fuel-type="diesel" data-power="medium">
                         <div class="product-image">
                             <img src="images/generators/silent-generators.jpg" alt="Silent Generators">
                         </div>
@@ -152,7 +288,7 @@
                     </div>
 
                     <!-- Petrol Generators -->
-                    <div class="product-card">
+                    <div class="product-card" data-fuel-type="petrol" data-power="small">
                         <div class="product-image">
                             <img src="images/generators/petrol-generators.jpg" alt="Petrol Generators">
                         </div>
@@ -173,7 +309,7 @@
                     </div>
 
                     <!-- Inverter Generators -->
-                    <div class="product-card">
+                    <div class="product-card" data-fuel-type="inverter" data-power="small">
                         <div class="product-image">
                             <img src="images/generators/inverter-generators.jpg" alt="Inverter Generators">
                         </div>
@@ -194,7 +330,7 @@
                     </div>
 
                     <!-- Automatic Standby Generators -->
-                    <div class="product-card">
+                    <div class="product-card" data-fuel-type="diesel" data-power="medium">
                         <div class="product-image">
                             <img src="images/generators/standby-generators.jpg" alt="Automatic Standby Generators">
                         </div>
@@ -218,8 +354,6 @@
         </div>
     </section>
 
-    
-
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -237,5 +371,138 @@
 
     <script src="js/inheritance.js"></script>
     <script src="js/generators.js"></script>
+    <script>
+        // Search Engine Functionality for Generators
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const fuelTypeFilter = document.getElementById('fuelTypeFilter');
+            const powerFilter = document.getElementById('powerFilter');
+            const searchResultsInfo = document.getElementById('searchResultsInfo');
+            const productCards = document.querySelectorAll('.product-card');
+            const categorySections = document.querySelectorAll('.category-section');
+            
+            // Initialize search
+            performSearch();
+            
+            // Add event listeners
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch);
+            categoryFilter.addEventListener('change', performSearch);
+            fuelTypeFilter.addEventListener('change', performSearch);
+            powerFilter.addEventListener('change', performSearch);
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const categoryValue = categoryFilter.value;
+                const fuelTypeValue = fuelTypeFilter.value;
+                const powerValue = powerFilter.value;
+                
+                let visibleCount = 0;
+                let totalCount = 0;
+                
+                // Reset all products to visible
+                productCards.forEach(card => {
+                    card.classList.remove('hidden');
+                    card.classList.remove('search-match');
+                    
+                    // Remove previous highlights
+                    const elements = card.querySelectorAll('h4, p, .product-features span');
+                    elements.forEach(el => {
+                        el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
+                    });
+                });
+                
+                // Filter products
+                productCards.forEach(card => {
+                    totalCount++;
+                    
+                    const productTitle = card.querySelector('h4').textContent.toLowerCase();
+                    const productDescription = card.querySelector('p').textContent.toLowerCase();
+                    const productFeatures = Array.from(card.querySelectorAll('.product-features span'))
+                        .map(span => span.textContent.toLowerCase())
+                        .join(' ');
+                    
+                    const productText = productTitle + ' ' + productDescription + ' ' + productFeatures;
+                    
+                    const categoryMatch = categoryValue === 'all' || 
+                        card.closest('.category-section').dataset.category === categoryValue;
+                    
+                    const fuelTypeMatch = fuelTypeValue === 'all' || 
+                        card.dataset.fuelType === fuelTypeValue;
+                    
+                    const powerMatch = powerValue === 'all' || 
+                        card.dataset.power === powerValue;
+                    
+                    const searchMatch = searchTerm === '' || 
+                        productText.includes(searchTerm);
+                    
+                    if (categoryMatch && fuelTypeMatch && powerMatch && searchMatch) {
+                        visibleCount++;
+                        
+                        // Highlight search term if present
+                        if (searchTerm !== '') {
+                            highlightText(card, searchTerm);
+                            card.classList.add('search-match');
+                        }
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // Update category sections visibility
+                categorySections.forEach(section => {
+                    const hasVisibleProducts = Array.from(section.querySelectorAll('.product-card'))
+                        .some(card => !card.classList.contains('hidden'));
+                    
+                    if (hasVisibleProducts) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+                
+                // Update results info
+                if (searchTerm !== '' || categoryValue !== 'all' || fuelTypeValue !== 'all' || powerValue !== 'all') {
+                    searchResultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} products`;
+                    
+                    if (visibleCount === 0) {
+                        searchResultsInfo.innerHTML = `No generators found matching your criteria. <a href="#" id="resetSearch">Reset filters</a>`;
+                        
+                        document.getElementById('resetSearch').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            resetFilters();
+                        });
+                    }
+                } else {
+                    searchResultsInfo.textContent = '';
+                }
+            }
+            
+            function highlightText(element, searchTerm) {
+                const elements = element.querySelectorAll('h4, p, .product-features span');
+                
+                elements.forEach(el => {
+                    const text = el.textContent;
+                    const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+                    const highlighted = text.replace(regex, '<span class="highlight">$1</span>');
+                    el.innerHTML = highlighted;
+                });
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            function resetFilters() {
+                searchInput.value = '';
+                categoryFilter.value = 'all';
+                fuelTypeFilter.value = 'all';
+                powerFilter.value = 'all';
+                performSearch();
+            }
+        });
+    </script>
 </body>
 </html>

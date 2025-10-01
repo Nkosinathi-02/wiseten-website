@@ -8,10 +8,150 @@
     <link rel="stylesheet" href="css/tools-ppe.css">
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <style>
+        /* Search Engine Styles */
+        .search-engine {
+            padding: 2rem 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(42, 75, 141, 0.3);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .search-results-info {
+            text-align: center;
+            margin: 1rem 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .search-match {
+            animation: pulse 1s ease;
+        }
+        
+        @keyframes pulse {
+            0% { background-color: #fffacd; }
+            100% { background-color: transparent; }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <div id="navbar-container"></div>
+<br/><br/><br/><br/>
+    <!-- Search Engine -->
+    <section class="search-engine">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search tools & safety equipment...">
+                <button id="searchButton" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="search-filters">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="hand-tools">Hand Tools</option>
+                    <option value="power-tools">Power Tools</option>
+                    <option value="ppe">PPE & Safety</option>
+                </select>
+                <select id="typeFilter" class="filter-select">
+                    <option value="all">All Types</option>
+                    <option value="cutting">Cutting Tools</option>
+                    <option value="fastening">Fastening Tools</option>
+                    <option value="measuring">Measuring Tools</option>
+                    <option value="protection">Protection Gear</option>
+                    <option value="safety">Safety Equipment</option>
+                </select>
+                <select id="applicationFilter" class="filter-select">
+                    <option value="all">All Applications</option>
+                    <option value="construction">Construction</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="welding">Welding</option>
+                    <option value="general">General Purpose</option>
+                </select>
+            </div>
+            <div id="searchResultsInfo" class="search-results-info"></div>
+        </div>
+    </section>
 
     <!-- Category Hero Section -->
     <section class="tools-ppe-hero">
@@ -33,13 +173,13 @@
             <h2>Our Tools & Safety Equipment Range</h2>
             
             <!-- Hand Tools Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="hand-tools">
                 <h3 class="category-title">Hand Tools</h3>
                 <p class="category-description">Essential manual tools for construction, maintenance, and repair work</p>
                 
                 <div class="products-grid">
                     <!-- Wrenches & Spanners -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="fastening" data-application="mechanical general">
                         <div class="product-image">
                             <img src="images/tools-ppe/wrenches-spanners.jpg" alt="Wrenches & Spanners">
                         </div>
@@ -60,7 +200,7 @@
                     </div>
 
                     <!-- Screwdrivers & Drivers -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="fastening" data-application="electrical general">
                         <div class="product-image">
                             <img src="images/tools-ppe/screwdrivers.jpg" alt="Screwdrivers & Drivers">
                         </div>
@@ -81,7 +221,7 @@
                     </div>
 
                     <!-- Pliers & Cutters -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="cutting" data-application="electrical mechanical">
                         <div class="product-image">
                             <img src="images/tools-ppe/pliers-cutters.jpg" alt="Pliers & Cutters">
                         </div>
@@ -102,7 +242,7 @@
                     </div>
 
                     <!-- Measuring Tools -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="measuring" data-application="construction general">
                         <div class="product-image">
                             <img src="images/tools-ppe/measuring-tools.jpg" alt="Measuring Tools">
                         </div>
@@ -125,13 +265,13 @@
             </div>
 
             <!-- Power Tools Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="power-tools">
                 <h3 class="category-title">Power Tools</h3>
                 <p class="category-description">Electric and pneumatic power tools for efficient construction and fabrication</p>
                 
                 <div class="products-grid">
                     <!-- Drills & Drivers -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="fastening" data-application="construction electrical">
                         <div class="product-image">
                             <img src="images/tools-ppe/drills-drivers.jpg" alt="Drills & Drivers">
                         </div>
@@ -152,7 +292,7 @@
                     </div>
 
                     <!-- Grinders & Sanders -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="cutting" data-application="metalworking construction">
                         <div class="product-image">
                             <img src="images/tools-ppe/grinders-sanders.jpg" alt="Grinders & Sanders">
                         </div>
@@ -173,7 +313,7 @@
                     </div>
 
                     <!-- Saws & Cutters -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="cutting" data-application="construction woodworking">
                         <div class="product-image">
                             <img src="images/tools-ppe/saws-cutters.jpg" alt="Saws & Cutters">
                         </div>
@@ -194,7 +334,7 @@
                     </div>
 
                     <!-- Pneumatic Tools -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="fastening" data-application="mechanical automotive">
                         <div class="product-image">
                             <img src="images/tools-ppe/pneumatic-tools.jpg" alt="Pneumatic Tools">
                         </div>
@@ -217,13 +357,13 @@
             </div>
 
             <!-- PPE Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="ppe">
                 <h3 class="category-title">Personal Protective Equipment (PPE)</h3>
                 <p class="category-description">Complete safety gear to protect workers in various industrial environments</p>
                 
                 <div class="products-grid">
                     <!-- Head Protection -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="protection" data-application="construction general">
                         <div class="product-image">
                             <img src="images/tools-ppe/head-protection.jpg" alt="Head Protection">
                         </div>
@@ -244,7 +384,7 @@
                     </div>
 
                     <!-- Eye & Face Protection -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="protection" data-application="welding general">
                         <div class="product-image">
                             <img src="images/tools-ppe/eye-protection.jpg" alt="Eye & Face Protection">
                         </div>
@@ -265,7 +405,7 @@
                     </div>
 
                     <!-- Hearing Protection -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="protection" data-application="construction general">
                         <div class="product-image">
                             <img src="images/tools-ppe/hearing-protection.jpg" alt="Hearing Protection">
                         </div>
@@ -286,7 +426,7 @@
                     </div>
 
                     <!-- Respiratory Protection -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="protection" data-application="welding construction">
                         <div class="product-image">
                             <img src="images/tools-ppe/respiratory-protection.jpg" alt="Respiratory Protection">
                         </div>
@@ -307,7 +447,7 @@
                     </div>
 
                     <!-- Hand Protection -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="protection" data-application="general mechanical">
                         <div class="product-image">
                             <img src="images/tools-ppe/hand-protection.jpg" alt="Hand Protection">
                         </div>
@@ -328,7 +468,7 @@
                     </div>
 
                     <!-- Body Protection -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="protection" data-application="construction welding">
                         <div class="product-image">
                             <img src="images/tools-ppe/body-protection.jpg" alt="Body Protection">
                         </div>
@@ -349,7 +489,7 @@
                     </div>
 
                     <!-- Foot Protection -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="protection" data-application="construction general">
                         <div class="product-image">
                             <img src="images/tools-ppe/foot-protection.jpg" alt="Foot Protection">
                         </div>
@@ -370,7 +510,7 @@
                     </div>
 
                     <!-- Fall Protection -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="safety" data-application="construction general">
                         <div class="product-image">
                             <img src="images/tools-ppe/fall-protection.jpg" alt="Fall Protection">
                         </div>
@@ -394,8 +534,6 @@
         </div>
     </section>
 
-    
-
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -413,5 +551,138 @@
 
     <script src="js/inheritance.js"></script>
     <script src="js/tools-ppe.js"></script>
+    <script>
+        // Search Engine Functionality for Tools & PPE
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const typeFilter = document.getElementById('typeFilter');
+            const applicationFilter = document.getElementById('applicationFilter');
+            const searchResultsInfo = document.getElementById('searchResultsInfo');
+            const productCards = document.querySelectorAll('.product-card');
+            const categorySections = document.querySelectorAll('.category-section');
+            
+            // Initialize search
+            performSearch();
+            
+            // Add event listeners
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch);
+            categoryFilter.addEventListener('change', performSearch);
+            typeFilter.addEventListener('change', performSearch);
+            applicationFilter.addEventListener('change', performSearch);
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const categoryValue = categoryFilter.value;
+                const typeValue = typeFilter.value;
+                const applicationValue = applicationFilter.value;
+                
+                let visibleCount = 0;
+                let totalCount = 0;
+                
+                // Reset all products to visible
+                productCards.forEach(card => {
+                    card.classList.remove('hidden');
+                    card.classList.remove('search-match');
+                    
+                    // Remove previous highlights
+                    const elements = card.querySelectorAll('h4, p, .product-features span');
+                    elements.forEach(el => {
+                        el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
+                    });
+                });
+                
+                // Filter products
+                productCards.forEach(card => {
+                    totalCount++;
+                    
+                    const productTitle = card.querySelector('h4').textContent.toLowerCase();
+                    const productDescription = card.querySelector('p').textContent.toLowerCase();
+                    const productFeatures = Array.from(card.querySelectorAll('.product-features span'))
+                        .map(span => span.textContent.toLowerCase())
+                        .join(' ');
+                    
+                    const productText = productTitle + ' ' + productDescription + ' ' + productFeatures;
+                    
+                    const categoryMatch = categoryValue === 'all' || 
+                        card.closest('.category-section').dataset.category === categoryValue;
+                    
+                    const typeMatch = typeValue === 'all' || 
+                        card.dataset.type === typeValue;
+                    
+                    const applicationMatch = applicationValue === 'all' || 
+                        card.dataset.application.includes(applicationValue);
+                    
+                    const searchMatch = searchTerm === '' || 
+                        productText.includes(searchTerm);
+                    
+                    if (categoryMatch && typeMatch && applicationMatch && searchMatch) {
+                        visibleCount++;
+                        
+                        // Highlight search term if present
+                        if (searchTerm !== '') {
+                            highlightText(card, searchTerm);
+                            card.classList.add('search-match');
+                        }
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // Update category sections visibility
+                categorySections.forEach(section => {
+                    const hasVisibleProducts = Array.from(section.querySelectorAll('.product-card'))
+                        .some(card => !card.classList.contains('hidden'));
+                    
+                    if (hasVisibleProducts) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+                
+                // Update results info
+                if (searchTerm !== '' || categoryValue !== 'all' || typeValue !== 'all' || applicationValue !== 'all') {
+                    searchResultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} products`;
+                    
+                    if (visibleCount === 0) {
+                        searchResultsInfo.innerHTML = `No tools or safety equipment found matching your criteria. <a href="#" id="resetSearch">Reset filters</a>`;
+                        
+                        document.getElementById('resetSearch').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            resetFilters();
+                        });
+                    }
+                } else {
+                    searchResultsInfo.textContent = '';
+                }
+            }
+            
+            function highlightText(element, searchTerm) {
+                const elements = element.querySelectorAll('h4, p, .product-features span');
+                
+                elements.forEach(el => {
+                    const text = el.textContent;
+                    const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+                    const highlighted = text.replace(regex, '<span class="highlight">$1</span>');
+                    el.innerHTML = highlighted;
+                });
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            function resetFilters() {
+                searchInput.value = '';
+                categoryFilter.value = 'all';
+                typeFilter.value = 'all';
+                applicationFilter.value = 'all';
+                performSearch();
+            }
+        });
+    </script>
 </body>
 </html>

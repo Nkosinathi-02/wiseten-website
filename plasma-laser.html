@@ -8,10 +8,148 @@
     <link rel="stylesheet" href="css/plasma-laser.css">
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <style>
+        /* Search Engine Styles */
+        .search-engine {
+            padding: 2rem 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(42, 75, 141, 0.3);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .search-results-info {
+            text-align: center;
+            margin: 1rem 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .search-match {
+            animation: pulse 1s ease;
+        }
+        
+        @keyframes pulse {
+            0% { background-color: #fffacd; }
+            100% { background-color: transparent; }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <div id="navbar-container"></div>
+<br/><br/><br/><br/>
+    <!-- Search Engine -->
+    <section class="search-engine">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search plasma & laser cutting equipment...">
+                <button id="searchButton" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="search-filters">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="plasma">Plasma Systems</option>
+                    <option value="laser">Laser Systems</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+                <select id="typeFilter" class="filter-select">
+                    <option value="all">All Types</option>
+                    <option value="handheld">Handheld</option>
+                    <option value="cnc">CNC/Automated</option>
+                    <option value="consumables">Consumables</option>
+                    <option value="software">Software</option>
+                </select>
+                <select id="powerFilter" class="filter-select">
+                    <option value="all">All Power Levels</option>
+                    <option value="low">Low Power</option>
+                    <option value="medium">Medium Power</option>
+                    <option value="high">High Power</option>
+                    <option value="industrial">Industrial</option>
+                </select>
+            </div>
+            <div id="searchResultsInfo" class="search-results-info"></div>
+        </div>
+    </section>
 
     <!-- Category Hero Section -->
     <section class="plasma-laser-hero">
@@ -33,13 +171,13 @@
             <h2>Our Cutting Equipment Range</h2>
             
             <!-- Plasma Cutting Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="plasma">
                 <h3 class="category-title">Plasma Cutting Systems</h3>
                 <p class="category-description">High-performance plasma cutting equipment for various metals and thicknesses</p>
                 
                 <div class="products-grid">
                     <!-- Handheld Plasma Cutters -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="handheld" data-power="medium">
                         <div class="product-image">
                             <img src="images/plasma-laser/handheld-plasma.jpg" alt="Handheld Plasma Cutters">
                         </div>
@@ -60,7 +198,7 @@
                     </div>
 
                     <!-- CNC Plasma Tables -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="cnc" data-power="industrial">
                         <div class="product-image">
                             <img src="images/plasma-laser/cnc-plasma.jpg" alt="CNC Plasma Tables">
                         </div>
@@ -80,10 +218,8 @@
                         </div>
                     </div>
 
-                    
-
                     <!-- Plasma Consumables -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="consumables" data-power="low">
                         <div class="product-image">
                             <img src="images/plasma-laser/plasma-consumables.jpg" alt="Plasma Consumables">
                         </div>
@@ -106,13 +242,13 @@
             </div>
 
             <!-- Laser Cutting Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="laser">
                 <h3 class="category-title">Laser Cutting Systems</h3>
                 <p class="category-description">Advanced laser cutting technology for precision and speed in metal fabrication</p>
                 
                 <div class="products-grid">
                     <!-- Fiber Laser Cutters -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="cnc" data-power="high">
                         <div class="product-image">
                             <img src="images/plasma-laser/fiber-laser.jpg" alt="Fiber Laser Cutters">
                         </div>
@@ -132,9 +268,8 @@
                         </div>
                     </div>
 
-                    
                     <!-- Laser Accessories -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="accessories" data-power="low">
                         <div class="product-image">
                             <img src="images/plasma-laser/laser-accessories.jpg" alt="Laser Accessories">
                         </div>
@@ -157,13 +292,13 @@
             </div>
 
             <!-- Cutting Accessories Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="accessories">
                 <h3 class="category-title">Cutting Accessories & Safety</h3>
                 <p class="category-description">Essential accessories and safety equipment for plasma and laser cutting operations</p>
                 
                 <div class="products-grid">
                     <!-- Cutting Tables -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="accessories" data-power="low">
                         <div class="product-image">
                             <img src="images/plasma-laser/cutting-tables.jpg" alt="Cutting Tables">
                         </div>
@@ -183,9 +318,8 @@
                         </div>
                     </div>
 
-                    
                     <!-- Gas Systems -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="accessories" data-power="low">
                         <div class="product-image">
                             <img src="images/plasma-laser/cutting-gases.jpg" alt="Gas Systems">
                         </div>
@@ -206,7 +340,7 @@
                     </div>
 
                     <!-- Software & Controls -->
-                    <div class="product-card">
+                    <div class="product-card" data-type="software" data-power="low">
                         <div class="product-image">
                             <img src="images/plasma-laser/cutting-software.jpg" alt="Software & Controls">
                         </div>
@@ -230,7 +364,6 @@
         </div>
     </section>
 
-    
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -248,5 +381,138 @@
 
     <script src="js/inheritance.js"></script>
     <script src="js/plasma-laser.js"></script>
+    <script>
+        // Search Engine Functionality for Plasma & Laser Cutting
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const typeFilter = document.getElementById('typeFilter');
+            const powerFilter = document.getElementById('powerFilter');
+            const searchResultsInfo = document.getElementById('searchResultsInfo');
+            const productCards = document.querySelectorAll('.product-card');
+            const categorySections = document.querySelectorAll('.category-section');
+            
+            // Initialize search
+            performSearch();
+            
+            // Add event listeners
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch);
+            categoryFilter.addEventListener('change', performSearch);
+            typeFilter.addEventListener('change', performSearch);
+            powerFilter.addEventListener('change', performSearch);
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const categoryValue = categoryFilter.value;
+                const typeValue = typeFilter.value;
+                const powerValue = powerFilter.value;
+                
+                let visibleCount = 0;
+                let totalCount = 0;
+                
+                // Reset all products to visible
+                productCards.forEach(card => {
+                    card.classList.remove('hidden');
+                    card.classList.remove('search-match');
+                    
+                    // Remove previous highlights
+                    const elements = card.querySelectorAll('h4, p, .product-features span');
+                    elements.forEach(el => {
+                        el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
+                    });
+                });
+                
+                // Filter products
+                productCards.forEach(card => {
+                    totalCount++;
+                    
+                    const productTitle = card.querySelector('h4').textContent.toLowerCase();
+                    const productDescription = card.querySelector('p').textContent.toLowerCase();
+                    const productFeatures = Array.from(card.querySelectorAll('.product-features span'))
+                        .map(span => span.textContent.toLowerCase())
+                        .join(' ');
+                    
+                    const productText = productTitle + ' ' + productDescription + ' ' + productFeatures;
+                    
+                    const categoryMatch = categoryValue === 'all' || 
+                        card.closest('.category-section').dataset.category === categoryValue;
+                    
+                    const typeMatch = typeValue === 'all' || 
+                        card.dataset.type === typeValue;
+                    
+                    const powerMatch = powerValue === 'all' || 
+                        card.dataset.power === powerValue;
+                    
+                    const searchMatch = searchTerm === '' || 
+                        productText.includes(searchTerm);
+                    
+                    if (categoryMatch && typeMatch && powerMatch && searchMatch) {
+                        visibleCount++;
+                        
+                        // Highlight search term if present
+                        if (searchTerm !== '') {
+                            highlightText(card, searchTerm);
+                            card.classList.add('search-match');
+                        }
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // Update category sections visibility
+                categorySections.forEach(section => {
+                    const hasVisibleProducts = Array.from(section.querySelectorAll('.product-card'))
+                        .some(card => !card.classList.contains('hidden'));
+                    
+                    if (hasVisibleProducts) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+                
+                // Update results info
+                if (searchTerm !== '' || categoryValue !== 'all' || typeValue !== 'all' || powerValue !== 'all') {
+                    searchResultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} products`;
+                    
+                    if (visibleCount === 0) {
+                        searchResultsInfo.innerHTML = `No cutting equipment found matching your criteria. <a href="#" id="resetSearch">Reset filters</a>`;
+                        
+                        document.getElementById('resetSearch').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            resetFilters();
+                        });
+                    }
+                } else {
+                    searchResultsInfo.textContent = '';
+                }
+            }
+            
+            function highlightText(element, searchTerm) {
+                const elements = element.querySelectorAll('h4, p, .product-features span');
+                
+                elements.forEach(el => {
+                    const text = el.textContent;
+                    const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+                    const highlighted = text.replace(regex, '<span class="highlight">$1</span>');
+                    el.innerHTML = highlighted;
+                });
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            function resetFilters() {
+                searchInput.value = '';
+                categoryFilter.value = 'all';
+                typeFilter.value = 'all';
+                powerFilter.value = 'all';
+                performSearch();
+            }
+        });
+    </script>
 </body>
 </html>

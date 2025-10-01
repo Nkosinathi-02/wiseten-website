@@ -8,10 +8,170 @@
     <link rel="stylesheet" href="css/welding.css">
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <style>
+        /* Search Engine Styles */
+        .search-engine {
+            padding: 2rem 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(42, 75, 141, 0.3);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .search-results-info {
+            text-align: center;
+            margin: 1rem 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .search-match {
+            animation: pulse 1s ease;
+        }
+        
+        @keyframes pulse {
+            0% { background-color: #fffacd; }
+            100% { background-color: transparent; }
+        }
+        
+        /* Product features styling */
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .product-features span {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <div id="navbar-container"></div>
+<br/><br/><br/><br/>
+    <!-- Search Engine -->
+    <section class="search-engine">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search welding equipment...">
+                <button id="searchButton" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="search-filters">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="mig">MIG/MAG Welders</option>
+                    <option value="tig">TIG Welders</option>
+                    <option value="stick">Stick Welders</option>
+                    <option value="multi">Multi-Process</option>
+                    <option value="engine">Engine Driven</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="safety">Safety Equipment</option>
+                    <option value="automation">Automation</option>
+                </select>
+                <select id="powerFilter" class="filter-select">
+                    <option value="all">All Power Levels</option>
+                    <option value="low">Low (150A-200A)</option>
+                    <option value="medium">Medium (200A-300A)</option>
+                    <option value="high">High (300A-500A)</option>
+                </select>
+                <select id="applicationFilter" class="filter-select">
+                    <option value="all">All Applications</option>
+                    <option value="automotive">Automotive</option>
+                    <option value="construction">Construction</option>
+                    <option value="fabrication">Fabrication</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="outdoor">Outdoor/Field</option>
+                </select>
+            </div>
+            <div id="searchResultsInfo" class="search-results-info"></div>
+        </div>
+    </section>
 
     <!-- Category Hero Section -->
     <section class="welding-hero">
@@ -34,7 +194,7 @@
             
             <div class="products-grid">
                 <!-- MIG/MAG Welders -->
-                <div class="product-card">
+                <div class="product-card" data-category="mig" data-power="high" data-application="automotive fabrication industrial">
                     <div class="product-image">
                         <img src="images/welding/mig-mag-welders.jpg" alt="MIG/MAG Welders">
                     </div>
@@ -46,11 +206,16 @@
                             <span><i class="fas fa-plug"></i> 220V/380V Input</span>
                             <span><i class="fas fa-tachometer-alt"></i> 60% Duty Cycle</span>
                         </div>
+                        <div class="product-features">
+                            <span>Gas/Metal Arc</span>
+                            <span>Semi-Automatic</span>
+                            <span>Wire Feed</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- TIG Welders -->
-                <div class="product-card">
+                <div class="product-card" data-category="tig" data-power="medium" data-application="fabrication industrial">
                     <div class="product-image">
                         <img src="images/welding/tig-welders.jpg" alt="TIG Welders">
                     </div>
@@ -62,11 +227,16 @@
                             <span><i class="fas fa-wave-square"></i> AC/DC Capability</span>
                             <span><i class="fas fa-sliders-h"></i> Pulse Control</span>
                         </div>
+                        <div class="product-features">
+                            <span>Tungsten Inert Gas</span>
+                            <span>Precision Welding</span>
+                            <span>Clean Welds</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Stick Welders -->
-                <div class="product-card">
+                <div class="product-card" data-category="stick" data-power="high" data-application="construction outdoor industrial">
                     <div class="product-image">
                         <img src="images/welding/stick-welders.jpg" alt="Stick Welders">
                     </div>
@@ -78,11 +248,16 @@
                             <span><i class="fas fa-hard-hat"></i> Industrial Grade</span>
                             <span><i class="fas fa-cloud-sun"></i> All-Weather</span>
                         </div>
+                        <div class="product-features">
+                            <span>Arc Welding</span>
+                            <span>Heavy Duty</span>
+                            <span>Outdoor Use</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Multi-Process Welders -->
-                <div class="product-card">
+                <div class="product-card" data-category="multi" data-power="medium" data-application="fabrication automotive general">
                     <div class="product-image">
                         <img src="images/welding/multi-process-welders.jpg" alt="Multi-Process Welders">
                     </div>
@@ -94,11 +269,16 @@
                             <span><i class="fas fa-bolt"></i> Multi-Voltage</span>
                             <span><i class="fas fa-truck-moving"></i> Portable</span>
                         </div>
+                        <div class="product-features">
+                            <span>MIG/TIG/Stick</span>
+                            <span>Versatile</span>
+                            <span>Space Saving</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Engine Driven Welders -->
-                <div class="product-card">
+                <div class="product-card" data-category="engine" data-power="high" data-application="outdoor construction industrial">
                     <div class="product-image">
                         <img src="images/welding/engine-driven-welders.jpg" alt="Engine Driven Welders">
                     </div>
@@ -110,11 +290,16 @@
                             <span><i class="fas fa-bolt"></i> 200A-400A Output</span>
                             <span><i class="fas fa-plug"></i> Auxiliary Power</span>
                         </div>
+                        <div class="product-features">
+                            <span>Portable</span>
+                            <span>Generator</span>
+                            <span>Remote Work</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Welding Accessories -->
-                <div class="product-card">
+                <div class="product-card" data-category="accessories" data-power="low" data-application="general">
                     <div class="product-image">
                         <img src="images/welding/welding-accessories.jpg" alt="Welding Accessories">
                     </div>
@@ -126,11 +311,16 @@
                             <span><i class="fas fa-box"></i> Consumables</span>
                             <span><i class="fas fa-wrench"></i> Replacement Parts</span>
                         </div>
+                        <div class="product-features">
+                            <span>Torches</span>
+                            <span>Cables</span>
+                            <span>Consumables</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Welding Safety -->
-                <div class="product-card">
+                <div class="product-card" data-category="safety" data-power="low" data-application="general">
                     <div class="product-image">
                         <img src="images/welding/welding-safety.jpg" alt="Welding Safety">
                     </div>
@@ -142,11 +332,16 @@
                             <span><i class="fas fa-mitten"></i> Protective Gloves</span>
                             <span><i class="fas fa-lungs"></i> Respirators</span>
                         </div>
+                        <div class="product-features">
+                            <span>PPE</span>
+                            <span>Protection</span>
+                            <span>Safety Gear</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Welding Automation -->
-                <div class="product-card">
+                <div class="product-card" data-category="automation" data-power="high" data-application="industrial">
                     <div class="product-image">
                         <img src="images/welding/welding-automation.jpg" alt="Welding Automation">
                     </div>
@@ -158,30 +353,153 @@
                             <span><i class="fas fa-industry"></i> Industrial Grade</span>
                             <span><i class="fas fa-chart-line"></i> High Productivity</span>
                         </div>
+                        <div class="product-features">
+                            <span>Robotic</span>
+                            <span>Automated</span>
+                            <span>High Volume</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brands Section -->
-    
-
     <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Get Started?</h2>
-                <p>Contact us today to discuss your equipment needs and get a customized solution.</p>
-                <div class="cta-buttons">
-                    <a href="request-Quote.html" class="cta-button primary">Get a Quote</a>
-                    <a href="tel:0840262830" class="cta-button secondary">Call Now: 084 026 2830</a>
-                </div>
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today to discuss your equipment needs and get a customized solution.</p>
+            <div class="cta-buttons">
+                <a href="request-Quote.html" class="cta-button primary">Get a Quote</a>
+                <a href="tel:0840262830" class="cta-button secondary">Call Now: 084 026 2830</a>
             </div>
-        </section>
+        </div>
+    </section>
+
     <!-- Footer -->
     <div id="footer-container"></div>
 
     <script src="js/inheritance.js"></script>
     <script src="js/welding.js"></script>
+    <script>
+        // Search Engine Functionality for Welding Equipment
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const powerFilter = document.getElementById('powerFilter');
+            const applicationFilter = document.getElementById('applicationFilter');
+            const searchResultsInfo = document.getElementById('searchResultsInfo');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            // Initialize search
+            performSearch();
+            
+            // Add event listeners
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch);
+            categoryFilter.addEventListener('change', performSearch);
+            powerFilter.addEventListener('change', performSearch);
+            applicationFilter.addEventListener('change', performSearch);
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const categoryValue = categoryFilter.value;
+                const powerValue = powerFilter.value;
+                const applicationValue = applicationFilter.value;
+                
+                let visibleCount = 0;
+                let totalCount = 0;
+                
+                // Reset all products to visible
+                productCards.forEach(card => {
+                    card.classList.remove('hidden');
+                    card.classList.remove('search-match');
+                    
+                    // Remove previous highlights
+                    const elements = card.querySelectorAll('h3, p, .product-features span');
+                    elements.forEach(el => {
+                        el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
+                    });
+                });
+                
+                // Filter products
+                productCards.forEach(card => {
+                    totalCount++;
+                    
+                    const productTitle = card.querySelector('h3').textContent.toLowerCase();
+                    const productDescription = card.querySelector('p').textContent.toLowerCase();
+                    const productFeatures = Array.from(card.querySelectorAll('.product-features span'))
+                        .map(span => span.textContent.toLowerCase())
+                        .join(' ');
+                    
+                    const productText = productTitle + ' ' + productDescription + ' ' + productFeatures;
+                    
+                    const categoryMatch = categoryValue === 'all' || 
+                        card.dataset.category === categoryValue;
+                    
+                    const powerMatch = powerValue === 'all' || 
+                        card.dataset.power === powerValue;
+                    
+                    const applicationMatch = applicationValue === 'all' || 
+                        card.dataset.application.includes(applicationValue);
+                    
+                    const searchMatch = searchTerm === '' || 
+                        productText.includes(searchTerm);
+                    
+                    if (categoryMatch && powerMatch && applicationMatch && searchMatch) {
+                        visibleCount++;
+                        
+                        // Highlight search term if present
+                        if (searchTerm !== '') {
+                            highlightText(card, searchTerm);
+                            card.classList.add('search-match');
+                        }
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // Update results info
+                if (searchTerm !== '' || categoryValue !== 'all' || powerValue !== 'all' || applicationValue !== 'all') {
+                    searchResultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} products`;
+                    
+                    if (visibleCount === 0) {
+                        searchResultsInfo.innerHTML = `No welding equipment found matching your criteria. <a href="#" id="resetSearch">Reset filters</a>`;
+                        
+                        document.getElementById('resetSearch').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            resetFilters();
+                        });
+                    }
+                } else {
+                    searchResultsInfo.textContent = '';
+                }
+            }
+            
+            function highlightText(element, searchTerm) {
+                const elements = element.querySelectorAll('h3, p, .product-features span');
+                
+                elements.forEach(el => {
+                    const text = el.textContent;
+                    const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+                    const highlighted = text.replace(regex, '<span class="highlight">$1</span>');
+                    el.innerHTML = highlighted;
+                });
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            function resetFilters() {
+                searchInput.value = '';
+                categoryFilter.value = 'all';
+                powerFilter.value = 'all';
+                applicationFilter.value = 'all';
+                performSearch();
+            }
+        });
+    </script>
 </body>
 </html>

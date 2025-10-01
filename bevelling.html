@@ -8,10 +8,147 @@
     <link rel="stylesheet" href="css/bevelling.css">
     <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Search Engine Styles */
+        .search-engine {
+            padding: 2rem 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(42, 75, 141, 0.3);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .search-results-info {
+            text-align: center;
+            margin: 1rem 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .search-match {
+            animation: pulse 1s ease;
+        }
+        
+        @keyframes pulse {
+            0% { background-color: #fffacd; }
+            100% { background-color: transparent; }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <div id="navbar-container"></div>
+    <br/><br/><br/><br/>
+
+    <!-- Search Engine -->
+    <section class="search-engine">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search bevelling equipment...">
+                <button id="searchButton" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="search-filters">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="portable">Portable Bevellers</option>
+                    <option value="stationary">Stationary Systems</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="specialized">Specialized Solutions</option>
+                </select>
+                <select id="materialFilter" class="filter-select">
+                    <option value="all">All Materials</option>
+                    <option value="steel">Steel</option>
+                    <option value="stainless">Stainless Steel</option>
+                    <option value="aluminum">Aluminum</option>
+                    <option value="pipe">Pipe/Tube</option>
+                </select>
+                <select id="weightFilter" class="filter-select">
+                    <option value="all">Any Weight</option>
+                    <option value="light">Light (1-8 kg)</option>
+                    <option value="medium">Medium (8-40 kg)</option>
+                    <option value="heavy">Heavy (40+ kg)</option>
+                </select>
+            </div>
+            <div id="searchResultsInfo" class="search-results-info"></div>
+        </div>
+    </section>
 
     <!-- Category Hero Section -->
     <section class="bevelling-hero">
@@ -33,13 +170,13 @@
             <h2>Our Bevelling Equipment Range</h2>
             
             <!-- Portable Bevellers Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="portable">
                 <h3 class="category-title">Portable Bevelling Machines</h3>
                 <p class="category-description">Handheld and portable bevelling equipment for on-site work and flexibility</p>
                 
                 <div class="products-grid">
                     <!-- Handheld Bevellers -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="steel" data-weight="light">
                         <div class="product-image">
                             <img src="images/bevelling/handheld-bevellers.jpg" alt="Handheld Bevellers">
                         </div>
@@ -60,7 +197,7 @@
                     </div>
 
                     <!-- Portable Plate Bevellers -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="steel" data-weight="medium">
                         <div class="product-image">
                             <img src="images/bevelling/portable-plate-bevellers.jpg" alt="Portable Plate Bevellers">
                         </div>
@@ -81,7 +218,7 @@
                     </div>
 
                     <!-- Pipe Bevelling Machines -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="pipe" data-weight="medium">
                         <div class="product-image">
                             <img src="images/bevelling/pipe-bevellers.jpg" alt="Pipe Bevelling Machines">
                         </div>
@@ -102,7 +239,7 @@
                     </div>
 
                     <!-- Compact Bevelling Tools -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="steel" data-weight="light">
                         <div class="product-image">
                             <img src="images/bevelling/compact-bevellers.jpg" alt="Compact Bevelling Tools">
                         </div>
@@ -125,13 +262,13 @@
             </div>
 
             <!-- Stationary Bevellers Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="stationary">
                 <h3 class="category-title">Stationary Bevelling Systems</h3>
                 <p class="category-description">Fixed bevelling machines for high-volume production and precision work</p>
                 
                 <div class="products-grid">
                     <!-- Plate Bevelling Machines -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="steel" data-weight="heavy">
                         <div class="product-image">
                             <img src="images/bevelling/plate-bevellers.jpg" alt="Plate Bevelling Machines">
                         </div>
@@ -152,7 +289,7 @@
                     </div>
 
                     <!-- CNC Bevelling Systems -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="steel" data-weight="heavy">
                         <div class="product-image">
                             <img src="images/bevelling/cnc-bevellers.jpg" alt="CNC Bevelling Systems">
                         </div>
@@ -171,22 +308,17 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Automatic Bevelling Lines -->
-                    
-
-                    
                 </div>
             </div>
 
             <!-- Bevelling Accessories Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="accessories">
                 <h3 class="category-title">Bevelling Accessories & Tools</h3>
                 <p class="category-description">Essential accessories, blades, and consumables for bevelling operations</p>
                 
                 <div class="products-grid">
                     <!-- Bevelling Blades -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="steel" data-weight="light">
                         <div class="product-image">
                             <img src="images/bevelling/bevelling-blades.jpg" alt="Bevelling Blades">
                         </div>
@@ -206,9 +338,8 @@
                         </div>
                     </div>
 
-                    
                     <!-- Dust Extraction -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="steel" data-weight="medium">
                         <div class="product-image">
                             <img src="images/bevelling/dust-extraction.jpg" alt="Dust Extraction">
                         </div>
@@ -227,19 +358,17 @@
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
 
             <!-- Specialized Bevelling Section -->
-            <div class="category-section">
+            <div class="category-section" data-category="specialized">
                 <h3 class="category-title">Specialized Bevelling Solutions</h3>
                 <p class="category-description">Specialized equipment for unique applications and materials</p>
                 
                 <div class="products-grid">
                     <!-- Stainless Steel Bevellers -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="stainless" data-weight="medium">
                         <div class="product-image">
                             <img src="images/bevelling/stainless-bevellers.jpg" alt="Stainless Steel Bevellers">
                         </div>
@@ -260,7 +389,7 @@
                     </div>
 
                     <!-- Aluminum Bevellers -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="aluminum" data-weight="light">
                         <div class="product-image">
                             <img src="images/bevelling/aluminum-bevellers.jpg" alt="Aluminum Bevellers">
                         </div>
@@ -281,7 +410,7 @@
                     </div>
 
                     <!-- Tube & Profile Bevellers -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="pipe" data-weight="medium">
                         <div class="product-image">
                             <img src="images/bevelling/tube-bevellers.jpg" alt="Tube & Profile Bevellers">
                         </div>
@@ -302,7 +431,7 @@
                     </div>
 
                     <!-- CNC Pipe Bevelling -->
-                    <div class="product-card">
+                    <div class="product-card" data-material="pipe" data-weight="heavy">
                         <div class="product-image">
                             <img src="images/bevelling/cnc-pipe-bevellers.jpg" alt="CNC Pipe Bevelling">
                         </div>
@@ -326,7 +455,6 @@
         </div>
     </section>
 
-    
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -344,5 +472,138 @@
 
     <script src="js/inheritance.js"></script>
     <script src="js/bevelling.js"></script>
+    <script>
+        // Search Engine Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const materialFilter = document.getElementById('materialFilter');
+            const weightFilter = document.getElementById('weightFilter');
+            const searchResultsInfo = document.getElementById('searchResultsInfo');
+            const productCards = document.querySelectorAll('.product-card');
+            const categorySections = document.querySelectorAll('.category-section');
+            
+            // Initialize search
+            performSearch();
+            
+            // Add event listeners
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch);
+            categoryFilter.addEventListener('change', performSearch);
+            materialFilter.addEventListener('change', performSearch);
+            weightFilter.addEventListener('change', performSearch);
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const categoryValue = categoryFilter.value;
+                const materialValue = materialFilter.value;
+                const weightValue = weightFilter.value;
+                
+                let visibleCount = 0;
+                let totalCount = 0;
+                
+                // Reset all products to visible
+                productCards.forEach(card => {
+                    card.classList.remove('hidden');
+                    card.classList.remove('search-match');
+                    
+                    // Remove previous highlights
+                    const elements = card.querySelectorAll('h4, p, .product-features span');
+                    elements.forEach(el => {
+                        el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
+                    });
+                });
+                
+                // Filter products
+                productCards.forEach(card => {
+                    totalCount++;
+                    
+                    const productTitle = card.querySelector('h4').textContent.toLowerCase();
+                    const productDescription = card.querySelector('p').textContent.toLowerCase();
+                    const productFeatures = Array.from(card.querySelectorAll('.product-features span'))
+                        .map(span => span.textContent.toLowerCase())
+                        .join(' ');
+                    
+                    const productText = productTitle + ' ' + productDescription + ' ' + productFeatures;
+                    
+                    const categoryMatch = categoryValue === 'all' || 
+                        card.closest('.category-section').dataset.category === categoryValue;
+                    
+                    const materialMatch = materialValue === 'all' || 
+                        card.dataset.material === materialValue;
+                    
+                    const weightMatch = weightValue === 'all' || 
+                        card.dataset.weight === weightValue;
+                    
+                    const searchMatch = searchTerm === '' || 
+                        productText.includes(searchTerm);
+                    
+                    if (categoryMatch && materialMatch && weightMatch && searchMatch) {
+                        visibleCount++;
+                        
+                        // Highlight search term if present
+                        if (searchTerm !== '') {
+                            highlightText(card, searchTerm);
+                            card.classList.add('search-match');
+                        }
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // Update category sections visibility
+                categorySections.forEach(section => {
+                    const hasVisibleProducts = Array.from(section.querySelectorAll('.product-card'))
+                        .some(card => !card.classList.contains('hidden'));
+                    
+                    if (hasVisibleProducts) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+                
+                // Update results info
+                if (searchTerm !== '' || categoryValue !== 'all' || materialValue !== 'all' || weightValue !== 'all') {
+                    searchResultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} products`;
+                    
+                    if (visibleCount === 0) {
+                        searchResultsInfo.innerHTML = `No products found matching your criteria. <a href="#" id="resetSearch">Reset filters</a>`;
+                        
+                        document.getElementById('resetSearch').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            resetFilters();
+                        });
+                    }
+                } else {
+                    searchResultsInfo.textContent = '';
+                }
+            }
+            
+            function highlightText(element, searchTerm) {
+                const elements = element.querySelectorAll('h4, p, .product-features span');
+                
+                elements.forEach(el => {
+                    const text = el.textContent;
+                    const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+                    const highlighted = text.replace(regex, '<span class="highlight">$1</span>');
+                    el.innerHTML = highlighted;
+                });
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            function resetFilters() {
+                searchInput.value = '';
+                categoryFilter.value = 'all';
+                materialFilter.value = 'all';
+                weightFilter.value = 'all';
+                performSearch();
+            }
+        });
+    </script>
 </body>
 </html>

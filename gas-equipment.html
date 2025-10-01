@@ -6,20 +6,201 @@
     <title>Gas Equipment - Wiseten Company</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/gas-equipment.css">
-      <link rel="stylesheet" href="css/services.css">
+    <link rel="stylesheet" href="css/services.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <style>
+        /* Search Engine Styles */
+        .search-engine {
+            padding: 2rem 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(42, 75, 141, 0.3);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .search-results-info {
+            text-align: center;
+            margin: 1rem 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: #fffacd;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .search-match {
+            animation: pulse 1s ease;
+        }
+        
+        @keyframes pulse {
+            0% { background-color: #fffacd; }
+            100% { background-color: transparent; }
+        }
+        
+        /* Category sections for gas equipment */
+        .category-section {
+            margin-bottom: 4rem;
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .category-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .product-features span {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <div id="navbar-container"></div>
+<br/><br/><br/><br/>
+    <!-- Search Engine -->
+    <section class="search-engine">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search gas equipment...">
+                <button id="searchButton" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="search-filters">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="regulators">Regulators</option>
+                    <option value="safety">Safety Equipment</option>
+                    <option value="torches">Torches</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="gases">Industrial Gases</option>
+                </select>
+                <select id="gasTypeFilter" class="filter-select">
+                    <option value="all">All Gas Types</option>
+                    <option value="oxygen">Oxygen</option>
+                    <option value="acetylene">Acetylene</option>
+                    <option value="argon">Argon</option>
+                    <option value="co2">CO2</option>
+                    <option value="nitrogen">Nitrogen</option>
+                    <option value="fuel">Fuel Gas</option>
+                    <option value="general">General Purpose</option>
+                </select>
+                <select id="applicationFilter" class="filter-select">
+                    <option value="all">All Applications</option>
+                    <option value="welding">Welding</option>
+                    <option value="cutting">Cutting</option>
+                    <option value="heating">Heating</option>
+                    <option value="shielding">Shielding</option>
+                    <option value="safety">Safety</option>
+                </select>
+            </div>
+            <div id="searchResultsInfo" class="search-results-info"></div>
+        </div>
+    </section>
 
     <!-- Category Hero Section -->
     <section class="gas-hero">
         <div class="container">
             <div class="gas-hero-content">
                 <h1>Gas Equipment</h1>
-                <p>Wiseten provides comprehensive gas equipment solutions for welding, cutting, and industrial applications. Our range includes high-quality regulators, torches, and safety equipment from leading brands.</p>
-                <p>We offer reliable gas equipment designed for safety, precision, and durability. Whether you need oxygen/acetylene systems for cutting or specialized gas equipment for specific applications, we have the solutions you need.</p>
+                <p>Wiseten provides comprehensive gas equipment solutions for welding, cutting, and industrial applications. Our range includes high-quality regulators, torches, safety equipment, and industrial gases from leading brands.</p>
+                <p>We offer reliable gas equipment designed for safety, precision, and durability. Whether you need oxygen/acetylene systems for cutting, shielding gases for welding, or specialized gas equipment for specific applications, we have the solutions you need.</p>
             </div>
             <div class="gas-hero-image">
                 <img src="images/gas-equipment/gas-hero.jpg" alt="Gas Equipment">
@@ -32,125 +213,320 @@
         <div class="container">
             <h2>Our Gas Equipment Range</h2>
             
-            <div class="products-grid">
-                <!-- Oxygen Regulators -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/gas-equipment/oxygen-regulators.jpg" alt="Oxygen Regulators">
+            <!-- Regulators Section -->
+            <div class="category-section" data-category="regulators">
+                <h3 class="category-title">Gas Regulators</h3>
+                <p class="category-description">Precision regulators for controlling gas pressure in welding and cutting applications</p>
+                
+                <div class="products-grid">
+                    <!-- Oxygen Regulators -->
+                    <div class="product-card" data-gas-type="oxygen" data-application="welding cutting">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/oxygen-regulators.jpg" alt="Oxygen Regulators">
+                        </div>
+                        <div class="product-info">
+                            <h3>Oxygen Regulators</h3>
+                            <p>High-pressure oxygen regulators for welding, cutting, and medical applications with precise flow control.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-tachometer-alt"></i> High Pressure</span>
+                                <span><i class="fas fa-sliders-h"></i> Precise Control</span>
+                                <span><i class="fas fa-shield-alt"></i> Safety Certified</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Welding</span>
+                                <span>Cutting</span>
+                                <span>Medical Grade</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h3>Oxygen Regulators</h3>
-                        <p>High-pressure oxygen regulators for welding, cutting, and medical applications with precise flow control.</p>
-                        <div class="product-specs">
-                            <span><i class="fas fa-tachometer-alt"></i> High Pressure</span>
-                            <span><i class="fas fa-sliders-h"></i> Precise Control</span>
-                            <span><i class="fas fa-shield-alt"></i> Safety Certified</span>
+
+                    <!-- Acetylene Regulators -->
+                    <div class="product-card" data-gas-type="acetylene" data-application="welding cutting heating">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/acetylene-regulators.jpg" alt="Acetylene Regulators">
+                        </div>
+                        <div class="product-info">
+                            <h3>Acetylene Regulators</h3>
+                            <p>Medium-pressure acetylene regulators designed for safe and efficient fuel gas control.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-tachometer-alt"></i> Medium Pressure</span>
+                                <span><i class="fas fa-fire"></i> Fuel Gas</span>
+                                <span><i class="fas fa-shield-alt"></i> Safety Certified</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Fuel Control</span>
+                                <span>Welding</span>
+                                <span>Heating</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Argon/CO2 Regulators -->
+                    <div class="product-card" data-gas-type="argon co2" data-application="welding shielding">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/argon-regulators.jpg" alt="Argon/CO2 Regulators">
+                        </div>
+                        <div class="product-info">
+                            <h3>Argon/CO2 Regulators</h3>
+                            <p>Dual-purpose regulators for shielding gases in MIG and TIG welding applications.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-tachometer-alt"></i> Flow Meter</span>
+                                <span><i class="fas fa-wind"></i> Shielding Gas</span>
+                                <span><i class="fas fa-sliders-h"></i> Adjustable Flow</span>
+                            </div>
+                            <div class="product-features">
+                                <span>MIG Welding</span>
+                                <span>TIG Welding</span>
+                                <span>Flow Control</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Acetylene Regulators -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/gas-equipment/acetylene-regulators.jpg" alt="Acetylene Regulators">
+            <!-- Safety Equipment Section -->
+            <div class="category-section" data-category="safety">
+                <h3 class="category-title">Safety Equipment</h3>
+                <p class="category-description">Essential safety devices and equipment for safe gas handling operations</p>
+                
+                <div class="products-grid">
+                    <!-- Flashback Arrestors -->
+                    <div class="product-card" data-gas-type="general" data-application="safety">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/flashback-arrestors.jpg" alt="Flashback Arrestors">
+                        </div>
+                        <div class="product-info">
+                            <h3>Flashback Arrestors</h3>
+                            <p>Essential safety devices that prevent flashbacks in gas welding and cutting systems.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-shield-alt"></i> Safety Device</span>
+                                <span><i class="fas fa-exclamation-triangle"></i> Flashback Prevention</span>
+                                <span><i class="fas fa-check-circle"></i> Certified</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Critical Safety</span>
+                                <span>Flashback Protection</span>
+                                <span>Certified</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h3>Acetylene Regulators</h3>
-                        <p>Medium-pressure acetylene regulators designed for safe and efficient fuel gas control.</p>
-                        <div class="product-specs">
-                            <span><i class="fas fa-tachometer-alt"></i> Medium Pressure</span>
-                            <span><i class="fas fa-fire"></i> Fuel Gas</span>
-                            <span><i class="fas fa-shield-alt"></i> Safety Certified</span>
+
+                    <!-- Safety Equipment -->
+                    <div class="product-card" data-gas-type="general" data-application="safety">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/gas-safety-equipment.jpg" alt="Gas Safety Equipment">
+                        </div>
+                        <div class="product-info">
+                            <h3>Gas Safety Equipment</h3>
+                            <p>Complete safety gear including goggles, gloves, and leak detection equipment.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-hard-hat"></i> Protective Gear</span>
+                                <span><i class="fas fa-exclamation-triangle"></i> Leak Detection</span>
+                                <span><i class="fas fa-first-aid"></i> Safety First</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Protective Gear</span>
+                                <span>Leak Detection</span>
+                                <span>Safety First</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Flashback Arrestors -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/gas-equipment/flashback-arrestors.jpg" alt="Flashback Arrestors">
+            <!-- Torches Section -->
+            <div class="category-section" data-category="torches">
+                <h3 class="category-title">Welding & Cutting Torches</h3>
+                <p class="category-description">Professional torches for welding, cutting, and heating applications</p>
+                
+                <div class="products-grid">
+                    <!-- Cutting Torches -->
+                    <div class="product-card" data-gas-type="oxygen acetylene" data-application="cutting">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/cutting-torches.jpg" alt="Cutting Torches">
+                        </div>
+                        <div class="product-info">
+                            <h3>Cutting Torches</h3>
+                            <p>Professional cutting torches for oxygen-fuel cutting applications in various industries.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-fire"></i> Oxygen-Fuel</span>
+                                <span><i class="fas fa-cut"></i> Precision Cutting</span>
+                                <span><i class="fas fa-tools"></i> Professional Grade</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Oxygen-Fuel</span>
+                                <span>Precision Cutting</span>
+                                <span>Industrial Grade</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h3>Flashback Arrestors</h3>
-                        <p>Essential safety devices that prevent flashbacks in gas welding and cutting systems.</p>
-                        <div class="product-specs">
-                            <span><i class="fas fa-shield-alt"></i> Safety Device</span>
-                            <span><i class="fas fa-exclamation-triangle"></i> Flashback Prevention</span>
-                            <span><i class="fas fa-check-circle"></i> Certified</span>
+
+                    <!-- Welding Torches -->
+                    <div class="product-card" data-gas-type="oxygen acetylene" data-application="welding heating">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/welding-torches.jpg" alt="Welding Torches">
+                        </div>
+                        <div class="product-info">
+                            <h3>Welding Torches</h3>
+                            <p>Gas welding torches for brazing, soldering, and heating applications with various tip sizes.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-fire"></i> Gas Welding</span>
+                                <span><i class="fas fa-burn"></i> Heating/Brazing</span>
+                                <span><i class="fas fa-exchange-alt"></i> Interchangeable Tips</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Gas Welding</span>
+                                <span>Heating/Brazing</span>
+                                <span>Interchangeable Tips</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Cutting Torches -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/gas-equipment/cutting-torches.jpg" alt="Cutting Torches">
-                    </div>
-                    <div class="product-info">
-                        <h3>Cutting Torches</h3>
-                        <p>Professional cutting torches for oxygen-fuel cutting applications in various industries.</p>
-                        <div class="product-specs">
-                            <span><i class="fas fa-fire"></i> Oxygen-Fuel</span>
-                            <span><i class="fas fa-cut"></i> Precision Cutting</span>
-                            <span><i class="fas fa-tools"></i> Professional Grade</span>
+            <!-- Industrial Gases Section -->
+            <div class="category-section" data-category="gases">
+                <h3 class="category-title">Industrial Gases</h3>
+                <p class="category-description">High-purity industrial gases for welding, cutting, and shielding applications</p>
+                
+                <div class="products-grid">
+                    <!-- Argon Gas -->
+                    <div class="product-card" data-gas-type="argon" data-application="welding shielding">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/argon-gas.jpg" alt="Argon Gas">
+                        </div>
+                        <div class="product-info">
+                            <h3>Argon Gas</h3>
+                            <p>High-purity argon gas for TIG welding and as a shielding gas in various welding applications.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-wind"></i> High Purity</span>
+                                <span><i class="fas fa-bolt"></i> TIG Welding</span>
+                                <span><i class="fas fa-shield-alt"></i> Shielding Gas</span>
+                            </div>
+                            <div class="product-features">
+                                <span>TIG Welding</span>
+                                <span>Shielding</span>
+                                <span>High Purity</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Welding Torches -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/gas-equipment/welding-torches.jpg" alt="Welding Torches">
-                    </div>
-                    <div class="product-info">
-                        <h3>Welding Torches</h3>
-                        <p>Gas welding torches for brazing, soldering, and heating applications with various tip sizes.</p>
-                        <div class="product-specs">
-                            <span><i class="fas fa-fire"></i> Gas Welding</span>
-                            <span><i class="fas fa-burn"></i> Heating/Brazing</span>
-                            <span><i class="fas fa-exchange-alt"></i> Interchangeable Tips</span>
+                    <!-- CO2 Gas -->
+                    <!-- Butane Gas -->
+<div class="product-card" data-gas-type="butane" data-application="cooking heating">
+    <div class="product-image">
+        <img src="images/gas-equipment/butane-gas.jpg" alt="Butane Gas">
+    </div>
+    <div class="product-info">
+        <h3>Butane Gas</h3>
+        <p>High-purity butane gas for cooking, portable stoves, and heating applications.</p>
+        <div class="product-specs">
+            <span><i class="fas fa-fire"></i> High Energy</span>
+            <span><i class="fas fa-utensils"></i> Cooking</span>
+            <span><i class="fas fa-campground"></i> Portable</span>
+        </div>
+        <div class="product-features">
+            <span>Indoor Cooking</span>
+            <span>Portable Stoves</span>
+            <span>Clean Burning</span>
+        </div>
+    </div>
+</div>
+
+                    <!-- Propane Gas -->
+<div class="product-card" data-gas-type="propane" data-application="cooking heating grilling">
+    <div class="product-image">
+        <img src="images/gas-equipment/propane-gas.jpg" alt="Propane Gas">
+    </div>
+    <div class="product-info">
+        <h3>Propane Gas</h3>
+        <p>Versatile propane gas for grilling, home heating, and outdoor cooking applications.</p>
+        <div class="product-specs">
+            <span><i class="fas fa-fire"></i> High BTU</span>
+            <span><i class="fas fa-utensils"></i> Grilling</span>
+            <span><i class="fas fa-home"></i> Home Heating</span>
+        </div>
+        <div class="product-features">
+            <span>Outdoor Grilling</span>
+            <span>Home Heating</span>
+            <span>All-Weather Use</span>
+        </div>
+    </div>
+</div>
+            </div>
+
+            <!-- Accessories Section -->
+            <div class="category-section" data-category="accessories">
+                <h3 class="category-title">Accessories & Fittings</h3>
+                <p class="category-description">Essential accessories and fittings for complete gas equipment systems</p>
+                
+                <div class="products-grid">
+                    <!-- Gas Hose & Fittings -->
+                    <div class="product-card" data-gas-type="general" data-application="welding cutting heating">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/gas-hose-fittings.jpg" alt="Gas Hose & Fittings">
+                        </div>
+                        <div class="product-info">
+                            <h3>Gas Hose & Fittings</h3>
+                            <p>High-quality gas hoses, connectors, and fittings for safe gas distribution systems.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-wind"></i> Gas Distribution</span>
+                                <span><i class="fas fa-link"></i> Connectors</span>
+                                <span><i class="fas fa-shield-alt"></i> Leak-Proof</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Gas Distribution</span>
+                                <span>Connectors</span>
+                                <span>Leak-Proof</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Gas Hose & Fittings -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/gas-equipment/gas-hose-fittings.jpg" alt="Gas Hose & Fittings">
-                    </div>
-                    <div class="product-info">
-                        <h3>Gas Hose & Fittings</h3>
-                        <p>High-quality gas hoses, connectors, and fittings for safe gas distribution systems.</p>
-                        <div class="product-specs">
-                            <span><i class="fas fa-wind"></i> Gas Distribution</span>
-                            <span><i class="fas fa-link"></i> Connectors</span>
-                            <span><i class="fas fa-shield-alt"></i> Leak-Proof</span>
+                    <!-- Gas Cylinder Carts -->
+                    <div class="product-card" data-gas-type="general" data-application="safety">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/gas-carts.jpg" alt="Gas Cylinder Carts">
+                        </div>
+                        <div class="product-info">
+                            <h3>Gas Cylinder Carts</h3>
+                            <p>Heavy-duty cylinder carts for safe and easy transportation of gas cylinders.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-truck-moving"></i> Easy Transport</span>
+                                <span><i class="fas fa-shield-alt"></i> Safety Chains</span>
+                                <span><i class="fas fa-weight"></i> Heavy Duty</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Cylinder Transport</span>
+                                <span>Safety</span>
+                                <span>Heavy Duty</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-               
-
-                <!-- Safety Equipment -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/gas-equipment/gas-safety-equipment.jpg" alt="Gas Safety Equipment">
-                    </div>
-                    <div class="product-info">
-                        <h3>Gas Safety Equipment</h3>
-                        <p>Complete safety gear including goggles, gloves, and leak detection equipment.</p>
-                        <div class="product-specs">
-                            <span><i class="fas fa-hard-hat"></i> Protective Gear</span>
-                            <span><i class="fas fa-exclamation-triangle"></i> Leak Detection</span>
-                            <span><i class="fas fa-first-aid"></i> Safety First</span>
+                    <!-- Gas Manifold Systems -->
+                    <div class="product-card" data-gas-type="general" data-application="welding cutting heating">
+                        <div class="product-image">
+                            <img src="images/gas-equipment/gas-manifolds.jpg" alt="Gas Manifold Systems">
+                        </div>
+                        <div class="product-info">
+                            <h3>Gas Manifold Systems</h3>
+                            <p>Professional gas manifold systems for multiple cylinder setups and centralized gas distribution.</p>
+                            <div class="product-specs">
+                                <span><i class="fas fa-sitemap"></i> Multi-Cylinder</span>
+                                <span><i class="fas fa-wind"></i> Central Distribution</span>
+                                <span><i class="fas fa-cogs"></i> Automatic Changeover</span>
+                            </div>
+                            <div class="product-features">
+                                <span>Multiple Cylinders</span>
+                                <span>Central System</span>
+                                <span>Auto Changeover</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-   
 
     <!-- CTA Section -->
     <section class="cta-section">
@@ -169,5 +545,138 @@
 
     <script src="js/inheritance.js"></script>
     <script src="js/gas-equipment.js"></script>
+    <script>
+        // Search Engine Functionality for Gas Equipment
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const gasTypeFilter = document.getElementById('gasTypeFilter');
+            const applicationFilter = document.getElementById('applicationFilter');
+            const searchResultsInfo = document.getElementById('searchResultsInfo');
+            const productCards = document.querySelectorAll('.product-card');
+            const categorySections = document.querySelectorAll('.category-section');
+            
+            // Initialize search
+            performSearch();
+            
+            // Add event listeners
+            searchInput.addEventListener('input', performSearch);
+            searchButton.addEventListener('click', performSearch);
+            categoryFilter.addEventListener('change', performSearch);
+            gasTypeFilter.addEventListener('change', performSearch);
+            applicationFilter.addEventListener('change', performSearch);
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const categoryValue = categoryFilter.value;
+                const gasTypeValue = gasTypeFilter.value;
+                const applicationValue = applicationFilter.value;
+                
+                let visibleCount = 0;
+                let totalCount = 0;
+                
+                // Reset all products to visible
+                productCards.forEach(card => {
+                    card.classList.remove('hidden');
+                    card.classList.remove('search-match');
+                    
+                    // Remove previous highlights
+                    const elements = card.querySelectorAll('h3, p, .product-features span');
+                    elements.forEach(el => {
+                        el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
+                    });
+                });
+                
+                // Filter products
+                productCards.forEach(card => {
+                    totalCount++;
+                    
+                    const productTitle = card.querySelector('h3').textContent.toLowerCase();
+                    const productDescription = card.querySelector('p').textContent.toLowerCase();
+                    const productFeatures = Array.from(card.querySelectorAll('.product-features span'))
+                        .map(span => span.textContent.toLowerCase())
+                        .join(' ');
+                    
+                    const productText = productTitle + ' ' + productDescription + ' ' + productFeatures;
+                    
+                    const categoryMatch = categoryValue === 'all' || 
+                        card.closest('.category-section').dataset.category === categoryValue;
+                    
+                    const gasTypeMatch = gasTypeValue === 'all' || 
+                        card.dataset.gasType.includes(gasTypeValue);
+                    
+                    const applicationMatch = applicationValue === 'all' || 
+                        card.dataset.application.includes(applicationValue);
+                    
+                    const searchMatch = searchTerm === '' || 
+                        productText.includes(searchTerm);
+                    
+                    if (categoryMatch && gasTypeMatch && applicationMatch && searchMatch) {
+                        visibleCount++;
+                        
+                        // Highlight search term if present
+                        if (searchTerm !== '') {
+                            highlightText(card, searchTerm);
+                            card.classList.add('search-match');
+                        }
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // Update category sections visibility
+                categorySections.forEach(section => {
+                    const hasVisibleProducts = Array.from(section.querySelectorAll('.product-card'))
+                        .some(card => !card.classList.contains('hidden'));
+                    
+                    if (hasVisibleProducts) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+                
+                // Update results info
+                if (searchTerm !== '' || categoryValue !== 'all' || gasTypeValue !== 'all' || applicationValue !== 'all') {
+                    searchResultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} products`;
+                    
+                    if (visibleCount === 0) {
+                        searchResultsInfo.innerHTML = `No products found matching your criteria. <a href="#" id="resetSearch">Reset filters</a>`;
+                        
+                        document.getElementById('resetSearch').addEventListener('click', function(e) {
+                            e.preventDefault();
+                            resetFilters();
+                        });
+                    }
+                } else {
+                    searchResultsInfo.textContent = '';
+                }
+            }
+            
+            function highlightText(element, searchTerm) {
+                const elements = element.querySelectorAll('h3, p, .product-features span');
+                
+                elements.forEach(el => {
+                    const text = el.textContent;
+                    const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+                    const highlighted = text.replace(regex, '<span class="highlight">$1</span>');
+                    el.innerHTML = highlighted;
+                });
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            }
+            
+            function resetFilters() {
+                searchInput.value = '';
+                categoryFilter.value = 'all';
+                gasTypeFilter.value = 'all';
+                applicationFilter.value = 'all';
+                performSearch();
+            }
+        });
+    </script>
 </body>
 </html>

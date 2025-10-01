@@ -40,3 +40,10 @@ function initHeroSlider() {
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', initHeroSlider);
+// Splash Screen Fade Out
+    window.addEventListener("load", () => {
+      const splash = document.getElementById("splash-screen");
+      setTimeout(() => {
+        splash.classList.add("hidden");
+      }, 1000);
+    });

@@ -19,6 +19,7 @@
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     font-weight: 700;
+    color: white; /* Keep white for hero section */
 }
 
 .rentals-hero-content p {
@@ -44,7 +45,7 @@
 
 .rental-categories h2 {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: blue;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -91,7 +92,7 @@
 .category-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: blue;
 }
 
 .category-card p {
@@ -126,7 +127,7 @@
 
 .rental-section h2 {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: blue;
     margin-bottom: 3rem;
     text-align: center;
 }
@@ -185,7 +186,7 @@
 
 .rental-info h3 {
     font-size: 1.3rem;
-    color: var(--primary-color);
+    color: blue;
     margin-bottom: 0.5rem;
 }
 
@@ -212,7 +213,7 @@
 
 .rental-specs i {
     margin-right: 0.3rem;
-    color: var(--primary-color);
+    color: blue;
 }
 
 .rental-pricing {
@@ -265,6 +266,7 @@
     font-size: 2.5rem;
     margin-bottom: 3rem;
     text-align: center;
+    color: white; /* Keep white for benefits section */
 }
 
 .benefits-grid {
@@ -287,6 +289,7 @@
 .benefit-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    color: white; /* Keep white for benefits section */
 }
 
 .benefit-card p {
@@ -308,7 +311,7 @@
 
 .inquiry-content h2 {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: blue;
     margin-bottom: 1rem;
 }
 
@@ -362,6 +365,26 @@
     transform: translateY(-2px);
 }
 
+/* Ensure rental-btn styles work for both buttons and anchors */
+.rental-btn {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.rental-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .rentals-hero .container {
@@ -408,23 +431,4 @@
     .inquiry-content {
         padding: 0 1rem;
     }
-}
-/* Ensure rental-btn styles work for both buttons and anchors */
-.rental-btn {
-    display: inline-block;
-    background: #007bff;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.rental-btn:hover {
-    background: #0056b3;
-    transform: translateY(-2px);
 }

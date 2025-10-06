@@ -84,6 +84,8 @@ class PageInheritance {
                     <div class="legal-links">
    <p><i class="fas fa-file-contract"></i> <a href="documents/terms-and-conditions.pdf" target="_blank">Terms and Conditions</a></p>
 <p><i class="fas fa-user-shield"></i> <a href="documents/Privacy Policy WISETEN .pdf" target="_blank">Privacy Policy</a></p>
+    </div>
+                </div>
                 <div class="footer-section">
                     <h3><i class="fas fa-clock"></i> Operating Hours</h3>
                     <p><i class="fas fa-calendar-alt"></i> Monday - Friday: 07:30 - 16:30</p>

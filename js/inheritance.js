@@ -59,36 +59,45 @@ class PageInheritance {
 
         const footerHTML = `
             <footer class="footer">
-                <div class="container">
-                    <div class="footer-content">
-                        <div class="footer-section">
-                            <h3><i class="fas fa-building"></i> Wiseten Company</h3>
-                            <p>Wiseten Company is a leading provider of welding and construction equipment with years of industry expertise. We're committed to delivering high-quality products and exceptional service to our clients.</p>
-                        </div>
-                        <div class="footer-section">
-                            <h3><i class="fas fa-address-book"></i> Contact Info</h3>
-                            <p><i class="fas fa-phone"></i> <a href="tel:0840262830">Phone: 0840262830</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:WisetenEngineering@outlook.com">Email: WisetenEngineering@outlook.com</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:Phumlank@gmail.com">Email: Phumlank@gmail.com</a></p>
-                            <p><i class="fas fa-map-marker-alt"></i> Address: 85 Goodwood Road West Mead, Pinetown 3609</p>
-                        </div>
-                        <div class="footer-section">
-                            <h3><i class="fas fa-tools"></i> Our Products</h3>
-                            <p><i class="fas fa-bolt"></i> <a href="products.html#welding">Welding Equipment</a></p>
-                            <p><i class="fas fa-gas-pump"></i> <a href="products.html#gas">Gas Equipment</a></p>
-                            <p><i class="fas fa-generator"></i> <a href="products.html#generators">Generators</a></p>
-                            <p><i class="fas fa-hard-hat"></i> <a href="products.html#construction">Construction Equipment</a></p>
-                        </div>
-                        <div class="footer-section">
-                            <h3><i class="fas fa-clock"></i> Operating Hours</h3>
-                            <p><i class="fas fa-calendar-alt"></i> Monday - Friday: 07:30 - 16:30</p>
-                        </div>
-                    </div>
-                    <div class="footer-bottom">
-                        <p><i class="fas fa-copyright"></i> 2023 Wiseten Company. All rights reserved.</p>
-                    </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-building"></i> Wiseten Company</h3>
+                    <p>Wiseten Company is a leading provider of welding and construction equipment with years of industry expertise. We're committed to delivering high-quality products and exceptional service to our clients.</p>
                 </div>
-            </footer>
+                <div class="footer-section">
+                    <h3><i class="fas fa-address-book"></i> Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> <a href="tel:0840262830">Phone: 0840262830/ 0615493309</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:WisetenEngineering@outlook.com">Email: WisetenEngineering@outlook.com</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:Phumlank@gmail.com">Email: Phumlank@gmail.com</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Address: 85 Goodwood Road West Mead, Pinetown 3609</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Richards Bay - Ceramic Curve 20 Richard’s Bay , KwaZulu Natal 3900</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-tools"></i> Our Products</h3>
+                    <p><i class="fas fa-bolt"></i> <a href="welding.html">Welding Equipment</a></p>
+                    <p><i class="fas fa-gas-pump"></i> <a href="gas-equipment.html">Gas Equipment</a></p>
+                     <p><a href="generators.html" class="generator-link">
+                    <i class="fas fa-bolt"></i> Generators
+                </a></p>
+                    <p><i class="fas fa-hard-hat"></i> <a href="products.html#construction">Construction Equipment</a></p>
+                    <div class="legal-links">
+   <p><i class="fas fa-file-contract"></i> <a href="documents/terms-and-conditions.pdf" target="_blank">Terms and Conditions</a></p>
+<p><i class="fas fa-user-shield"></i> <a href="documents/Privacy Policy WISETEN .pdf" target="_blank">Privacy Policy</a></p>
+    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-clock"></i> Operating Hours</h3>
+                    <p><i class="fas fa-calendar-alt"></i> Monday - Friday: 07:30 - 16:30</p>
+                    <p><i class="fas fa-calendar-alt"></i> Saturday - Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><i class="fas fa-copyright"></i> 2025 Wiseten Company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
         `;
         
         footerContainer.innerHTML = footerHTML;

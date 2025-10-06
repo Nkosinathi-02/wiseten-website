@@ -45,7 +45,7 @@
 
 .rental-categories h2 {
     font-size: 2.5rem;
-    color: blue;
+    color: #2c3e50;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -92,7 +92,7 @@
 .category-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: blue;
+    color: #2c3e50;
 }
 
 .category-card p {
@@ -127,7 +127,7 @@
 
 .rental-section h2 {
     font-size: 2.5rem;
-    color: blue;
+    color: #2c3e50;
     margin-bottom: 3rem;
     text-align: center;
 }
@@ -186,7 +186,7 @@
 
 .rental-info h3 {
     font-size: 1.3rem;
-    color: blue;
+    color: #2c3e50;
     margin-bottom: 0.5rem;
 }
 
@@ -213,7 +213,7 @@
 
 .rental-specs i {
     margin-right: 0.3rem;
-    color: blue;
+    color: #2c3e50;
 }
 
 .rental-pricing {
@@ -311,7 +311,7 @@
 
 .inquiry-content h2 {
     font-size: 2.5rem;
-    color: blue;
+    color: #2c3e50;
     margin-bottom: 1rem;
 }
 

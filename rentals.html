@@ -125,13 +125,15 @@
                 </button>
             </div>
             <div class="search-filters">
-                <select id="categoryFilter" class="filter-select">
-                    <option value="all">All Categories</option>
-                    <option value="welding">Welding Equipment</option>
-                    <option value="generator">Generators</option>
-                    <option value="bevelling">Bevelling Equipment</option>
-                    <option value="tools">Power Tools</option>
-                </select>
+                <!-- Update this in your search filters section -->
+<select id="categoryFilter" class="filter-select">
+    <option value="all">All Categories</option>
+    <option value="welding">Welding Equipment</option>
+    <option value="generator">Generators</option>
+    <option value="bevelling">Bevelling Equipment</option>
+    <option value="tools">Power Tools</option>
+    <option value="plasma-cutting">Plasma & Cutting</option> <!-- Add this line -->
+</select>
                 <!--<select id="priceFilter" class="filter-select">
                     <option value="all">All Prices</option>
                     <option value="budget">Budget (Under R500/day)</option>
@@ -165,7 +167,7 @@
     <!-- Welding Equipment Rentals -->
     <section class="rental-section" id="welding-rentals" data-category="welding">
         <div class="container">
-            <h2 style="color: blue;">Welding Equipment Rentals</h2>
+            <h2 style="color: #2c3e50;">Welding Equipment Rentals</h2>
             <div class="rental-grid">
                 <!-- MIG/MAG Welders -->
                 <div class="rental-card" data-price="medium" data-availability="popular">
@@ -173,8 +175,8 @@
                         <img src="images/welding/mig-mag-welders.jpg" alt="MIG/MAG Welders">
                         <div class="rental-badge">Popular</div>
                     </div>
-                    <div class="rental-info" style="color: blue;">
-                        <h3 style="color: blue;">MIG/MAG Welders</h3>
+                    <div class="rental-info" style="color: #2c3e50;">
+                        <h3 style="color: #2c3e50;">MIG/MAG Welders</h3>
                         <p>200A-500A capacity for various applications</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-bolt"></i> 220V/380V</span>
@@ -201,7 +203,7 @@
                         <img src="images/welding/tig-welders.jpg" alt="TIG Welders">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">TIG Welders</h3>
+                        <h3 style="color: #2c3e50;">TIG Welders</h3>
                         <p>Precision welding for stainless steel and aluminum</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-bolt"></i> 150A-300A</span>
@@ -228,7 +230,7 @@
                         <img src="images/plasma-laser/handheld-plasma.jpg" alt="Plasma Cutters">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Plasma Cutters</h3>
+                        <h3 style="color: #2c3e50;">Plasma Cutters</h3>
                         <p>Handheld plasma cutting up to 25mm thickness</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-bolt"></i> 40A-100A</span>
@@ -256,7 +258,7 @@
                         <div class="rental-badge">Best Seller</div>
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Engine Driven Welders</h3>
+                        <h3 style="color: #2c3e50;">Engine Driven Welders</h3>
                         <p>Portable welding with integrated generator</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-gas-pump"></i> Diesel/Petrol</span>
@@ -283,7 +285,7 @@
     <!-- Generator Rentals -->
     <section class="rental-section" id="generator-rentals" data-category="generator">
         <div class="container">
-            <h2 style="color: blue;">Generator Rentals</h2>
+            <h2 style="color: #2c3e50;">Generator Rentals</h2>
             <div class="rental-grid">
                 <!-- Silent Generators -->
                 <div class="rental-card" data-price="premium" data-availability="all">
@@ -291,7 +293,7 @@
                         <img src="images/generators/silent-generators.jpg" alt="Silent Generators">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Silent Generators</h3>
+                        <h3 style="color: #2c3e50;">Silent Generators</h3>
                         <p>Quiet operation for urban and noise-sensitive areas</p>
                         <div class="rental-specs" >
                             <span><i class="fas fa-volume-mute"></i> Low Noise</span>
@@ -319,7 +321,7 @@
                         <div class="rental-badge">Popular</div>
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Diesel Generators</h3>
+                        <h3 style="color: #2c3e50;">Diesel Generators</h3>
                         <p>Heavy-duty power for construction and industry</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-bolt"></i> 50kVA-2000kVA</span>
@@ -346,7 +348,7 @@
                         <img src="images/generators/inverter-generators.jpg" alt="Inverter Generators">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Inverter Generators</h3>
+                        <h3 style="color: #2c3e50;">Inverter Generators</h3>
                         <p>Clean power for sensitive electronics</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-wave-square"></i> Clean Power</span>
@@ -373,7 +375,7 @@
     <!-- Bevelling Equipment Rentals -->
     <section class="rental-section" id="bevelling-rentals" data-category="bevelling">
         <div class="container">
-            <h2 style="color: blue;">Bevelling Equipment Rentals</h2>
+            <h2 style="color: #2c3e50;">Bevelling Equipment Rentals</h2>
             <div class="rental-grid">
                 <!-- Portable Bevellers -->
                 <div class="rental-card" data-price="budget" data-availability="all">
@@ -381,7 +383,7 @@
                         <img src="images/bevelling/handheld-bevellers.jpg" alt="Portable Bevellers">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Portable Bevellers</h3>
+                        <h3 style="color: #2c3e50;">Portable Bevellers</h3>
                         <p>Lightweight bevellers for on-site edge preparation</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-weight"></i> 3-8 kg</span>
@@ -408,7 +410,7 @@
                         <img src="images/bevelling/pipe-bevellers.jpg" alt="Pipe Bevelling Machines">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Pipe Bevelling Machines</h3>
+                        <h3 style="color: #2c3e50;">Pipe Bevelling Machines</h3>
                         <p>Specialized equipment for pipe end preparation</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-pipe"></i> 15-1200mm Ø</span>
@@ -435,7 +437,7 @@
     <!-- Power Tools Rentals -->
     <section class="rental-section" id="tools-rentals" data-category="tools">
         <div class="container">
-            <h2 style="color: blue;">Power Tools Rentals</h2>
+            <h2 style="color: #2c3e50;">Power Tools Rentals</h2>
             <div class="rental-grid">
                 <!-- Drills & Grinders -->
                 <div class="rental-card" data-price="budget" data-availability="all">
@@ -443,7 +445,7 @@
                         <img src="images/tools-ppe/drills-drivers.jpg" alt="Drills & Grinders">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Drills & Grinders</h3>
+                        <h3 style="color: #2c3e50;">Drills & Grinders</h3>
                         <p>Cordless drills, impact drivers, and angle grinders</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-bolt"></i> 12V-36V</span>
@@ -470,7 +472,7 @@
                         <img src="images/tools-ppe/saws-cutters.jpg" alt="Saws & Cutters">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Saws & Cutters</h3>
+                        <h3 style="color: #2c3e50;">Saws & Cutters</h3>
                         <p>Circular saws, jigsaws, and reciprocating saws</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-cut"></i> Multi-Material</span>
@@ -497,7 +499,7 @@
                         <img src="images/tools-ppe/pneumatic-tools.jpg" alt="Pneumatic Tools">
                     </div>
                     <div class="rental-info">
-                        <h3 style="color: blue;">Pneumatic Tools</h3>
+                        <h3 style="color: #2c3e50;">Pneumatic Tools</h3>
                         <p>Impact wrenches, nail guns, and air tools</p>
                         <div class="rental-specs">
                             <span><i class="fas fa-wind"></i> Air Powered</span>
@@ -521,10 +523,73 @@
         </div>
     </section>
 
+    <!-- Add this section after the Power Tools Rentals section -->
+
+<!-- Plasma & Cutting Equipment Rentals -->
+<section class="rental-section" id="plasma-cutting-rentals" data-category="plasma-cutting">
+    <div class="container">
+        <h2 style="color: #2c3e50;">Plasma & Cutting Equipment Rentals</h2>
+        <div class="rental-grid">
+            <!-- Handheld Plasma Cutters -->
+            <div class="rental-card" data-price="medium" data-availability="popular">
+                <div class="rental-image">
+                    <img src="images/plasma-laser/handheld-plasma.jpg" alt="Handheld Plasma Cutters">
+                    <div class="rental-badge">Popular</div>
+                </div>
+                <div class="rental-info">
+                    <h3 style="color: #2c3e50;">Handheld Plasma Cutters</h3>
+                    <p>Portable plasma cutting systems for on-site work and maintenance applications</p>
+                    <div class="rental-specs">
+                        <span><i class="fas fa-bolt"></i> 40A-100A</span>
+                        <span><i class="fas fa-cut"></i> Up to 25mm</span>
+                        <span><i class="fas fa-weight"></i> Portable</span>
+                    </div>
+                    <a href="request-Quote.html" class="rental-btn">Request A Quote</a>
+                </div>
+            </div>
+
+            <!-- CNC Plasma Tables -->
+            <div class="rental-card" data-price="premium" data-availability="all">
+                <div class="rental-image">
+                    <img src="images/plasma-laser/cnc-plasma.jpg" alt="CNC Plasma Tables">
+                </div>
+                <div class="rental-info">
+                    <h3 style="color: #2c3e50;">CNC Plasma Tables</h3>
+                    <p>Computer-controlled plasma cutting systems for precision and repeatability</p>
+                    <div class="rental-specs">
+                        <span><i class="fas fa-desktop"></i> CNC Control</span>
+                        <span><i class="fas fa-cut"></i> Up to 50mm</span>
+                        <span><i class="fas fa-expand"></i> Various Sizes</span>
+                    </div>
+                    <a href="request-Quote.html" class="rental-btn">Request A Quote</a>
+                </div>
+            </div>
+
+            <!-- Fiber Laser Cutters -->
+            <div class="rental-card" data-price="premium" data-availability="bestseller">
+                <div class="rental-image">
+                    <img src="images/plasma-laser/fiber-laser.jpg" alt="Fiber Laser Cutters">
+                    <div class="rental-badge">Best Seller</div>
+                </div>
+                <div class="rental-info">
+                    <h3 style="color: #2c3e50;">Fiber Laser Cutters</h3>
+                    <p>High-efficiency fiber laser systems for fast, precise cutting of various metals</p>
+                    <div class="rental-specs">
+                        <span><i class="fas fa-bolt"></i> 1kW-12kW</span>
+                        <span><i class="fas fa-cut"></i> Up to 25mm</span>
+                        <span><i class="fas fa-tachometer-alt"></i> High Speed</span>
+                    </div>
+                    <a href="request-Quote.html" class="rental-btn">Request A Quote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Rental Benefits -->
     <section class="rental-benefits">
         <div class="container">
-            <h2 style="color: blue;">Why Rent With Wiseten?</h2>
+            <h2 style="color: #2c3e50;">Why Rent With Wiseten?</h2>
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <i class="fas fa-tools"></i>
@@ -566,137 +631,276 @@
     <script src="js/inheritance.js"></script>
     <script src="js/rentals.js"></script>
     <script>
-        // Search Engine Functionality for Equipment Rentals
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            const searchButton = document.getElementById('searchButton');
-            const categoryFilter = document.getElementById('categoryFilter');
-            const priceFilter = document.getElementById('priceFilter');
-            const availabilityFilter = document.getElementById('availabilityFilter');
-            const searchResultsInfo = document.getElementById('searchResultsInfo');
-            const rentalCards = document.querySelectorAll('.rental-card');
-            const rentalSections = document.querySelectorAll('.rental-section');
+    // Search Engine Functionality for Equipment Rentals
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const priceFilter = document.getElementById('priceFilter');
+        const availabilityFilter = document.getElementById('availabilityFilter');
+        const searchResultsInfo = document.getElementById('searchResultsInfo');
+        const rentalCards = document.querySelectorAll('.rental-card');
+        const rentalSections = document.querySelectorAll('.rental-section');
+        
+        // Initialize search
+        performSearch();
+        
+        // Add event listeners
+        searchInput.addEventListener('input', performSearch);
+        searchButton.addEventListener('click', performSearch);
+        categoryFilter.addEventListener('change', performSearch);
+        if (priceFilter) priceFilter.addEventListener('change', performSearch);
+        availabilityFilter.addEventListener('change', performSearch);
+        
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const categoryValue = categoryFilter.value;
+            const priceValue = priceFilter ? priceFilter.value : 'all';
+            const availabilityValue = availabilityFilter.value;
             
-            // Initialize search
-            performSearch();
+            let visibleCount = 0;
+            let totalCount = 0;
             
-            // Add event listeners
-            searchInput.addEventListener('input', performSearch);
-            searchButton.addEventListener('click', performSearch);
-            categoryFilter.addEventListener('change', performSearch);
-            priceFilter.addEventListener('change', performSearch);
-            availabilityFilter.addEventListener('change', performSearch);
+            // Reset all rental cards to visible
+            rentalCards.forEach(card => {
+                card.classList.remove('hidden');
+                card.classList.remove('search-match');
+                
+                // Remove previous highlights
+                const elements = card.querySelectorAll('h3, p, .rental-specs span');
+                elements.forEach(el => {
+                    el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
+                });
+            });
             
-            function performSearch() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                const categoryValue = categoryFilter.value;
-                const priceValue = priceFilter.value;
-                const availabilityValue = availabilityFilter.value;
+            // Filter rental cards
+            rentalCards.forEach(card => {
+                totalCount++;
                 
-                let visibleCount = 0;
-                let totalCount = 0;
+                const productTitle = card.querySelector('h3').textContent.toLowerCase();
+                const productDescription = card.querySelector('p').textContent.toLowerCase();
+                const productSpecs = Array.from(card.querySelectorAll('.rental-specs span'))
+                    .map(span => span.textContent.toLowerCase())
+                    .join(' ');
                 
-                // Reset all rental cards to visible
-                rentalCards.forEach(card => {
-                    card.classList.remove('hidden');
-                    card.classList.remove('search-match');
-                    
-                    // Remove previous highlights
-                    const elements = card.querySelectorAll('h3, p, .rental-specs span');
-                    elements.forEach(el => {
-                        el.innerHTML = el.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
-                    });
-                });
+                const productText = productTitle + ' ' + productDescription + ' ' + productSpecs;
                 
-                // Filter rental cards
-                rentalCards.forEach(card => {
-                    totalCount++;
-                    
-                    const productTitle = card.querySelector('h3').textContent.toLowerCase();
-                    const productDescription = card.querySelector('p').textContent.toLowerCase();
-                    const productSpecs = Array.from(card.querySelectorAll('.rental-specs span'))
-                        .map(span => span.textContent.toLowerCase())
-                        .join(' ');
-                    
-                    const productText = productTitle + ' ' + productDescription + ' ' + productSpecs;
-                    
-                    const categoryMatch = categoryValue === 'all' || 
-                        card.closest('.rental-section').dataset.category === categoryValue;
-                    
-                    const priceMatch = priceValue === 'all' || 
-                        card.dataset.price === priceValue;
-                    
-                    const availabilityMatch = availabilityValue === 'all' || 
-                        card.dataset.availability === availabilityValue;
-                    
-                    const searchMatch = searchTerm === '' || 
-                        productText.includes(searchTerm);
-                    
-                    if (categoryMatch && priceMatch && availabilityMatch && searchMatch) {
-                        visibleCount++;
-                        
-                        // Highlight search term if present
-                        if (searchTerm !== '') {
-                            highlightText(card, searchTerm);
-                            card.classList.add('search-match');
-                        }
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
+                const categoryMatch = categoryValue === 'all' || 
+                    card.closest('.rental-section').dataset.category === categoryValue;
                 
-                // Update rental sections visibility
-                rentalSections.forEach(section => {
-                    const hasVisibleCards = Array.from(section.querySelectorAll('.rental-card'))
-                        .some(card => !card.classList.contains('hidden'));
-                    
-                    if (hasVisibleCards) {
-                        section.classList.remove('hidden');
-                    } else {
-                        section.classList.add('hidden');
-                    }
-                });
+                const priceMatch = priceValue === 'all' || 
+                    card.dataset.price === priceValue;
                 
-                // Update results info
-                if (searchTerm !== '' || categoryValue !== 'all' || priceValue !== 'all' || availabilityValue !== 'all') {
-                    searchResultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} rental items`;
+                const availabilityMatch = availabilityValue === 'all' || 
+                    card.dataset.availability === availabilityValue;
+                
+                const searchMatch = searchTerm === '' || 
+                    productText.includes(searchTerm);
+                
+                if (categoryMatch && priceMatch && availabilityMatch && searchMatch) {
+                    visibleCount++;
                     
-                    if (visibleCount === 0) {
-                        searchResultsInfo.innerHTML = `No rental equipment found matching your criteria. <a href="#" id="resetSearch">Reset filters</a>`;
-                        
-                        document.getElementById('resetSearch').addEventListener('click', function(e) {
-                            e.preventDefault();
-                            resetFilters();
-                        });
+                    // Highlight search term if present
+                    if (searchTerm !== '') {
+                        highlightText(card, searchTerm);
+                        card.classList.add('search-match');
                     }
                 } else {
-                    searchResultsInfo.textContent = '';
+                    card.classList.add('hidden');
+                }
+            });
+            
+            // Update rental sections visibility
+            rentalSections.forEach(section => {
+                const hasVisibleCards = Array.from(section.querySelectorAll('.rental-card'))
+                    .some(card => !card.classList.contains('hidden'));
+                
+                if (hasVisibleCards) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+            
+            // Update results info
+            if (searchTerm !== '' || categoryValue !== 'all' || priceValue !== 'all' || availabilityValue !== 'all') {
+                searchResultsInfo.textContent = `Showing ${visibleCount} of ${totalCount} rental items`;
+                
+                if (visibleCount === 0) {
+                    searchResultsInfo.innerHTML = `No rental equipment found matching your criteria. <a href="#" id="resetSearch">Reset filters</a>`;
+                    
+                    // Add event listener for reset button
+                    setTimeout(() => {
+                        const resetBtn = document.getElementById('resetSearch');
+                        if (resetBtn) {
+                            resetBtn.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                resetFilters();
+                            });
+                        }
+                    }, 100);
+                }
+            } else {
+                searchResultsInfo.textContent = '';
+            }
+        }
+        
+        function highlightText(element, searchTerm) {
+            const elements = element.querySelectorAll('h3, p, .rental-specs span');
+            
+            elements.forEach(el => {
+                const text = el.textContent;
+                const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
+                const highlighted = text.replace(regex, '<span class="highlight">$1</span>');
+                el.innerHTML = highlighted;
+            });
+        }
+        
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+        
+        function resetFilters() {
+            searchInput.value = '';
+            categoryFilter.value = 'all';
+            if (priceFilter) priceFilter.value = 'all';
+            availabilityFilter.value = 'all';
+            performSearch();
+        }
+
+        // Add click event listeners to all rental buttons
+        const rentalButtons = document.querySelectorAll('.rental-btn');
+        
+        rentalButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const equipmentName = this.closest('.rental-card').querySelector('h3').textContent;
+                
+                // Store equipment info for the quote page
+                const equipmentData = {
+                    name: equipmentName,
+                    category: this.closest('.rental-section').dataset.category,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Store in sessionStorage for the quote page
+                sessionStorage.setItem('selectedRentalEquipment', JSON.stringify(equipmentData));
+                
+                // Redirect to quote page
+                window.location.href = 'request-Quote.html';
+            });
+        });
+
+        // Initialize plasma-cutting section animations
+        function initPlasmaCuttingAnimations() {
+            const plasmaSection = document.getElementById('plasma-cutting-rentals');
+            if (plasmaSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const cards = entry.target.querySelectorAll('.rental-card');
+                            cards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, index * 200);
+                            });
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(plasmaSection);
+            }
+        }
+
+        // Call initialization for plasma-cutting section
+        initPlasmaCuttingAnimations();
+    });
+
+    // Enhanced equipment tracking for plasma-cutting
+    function trackPlasmaRentalInquiry(equipmentName) {
+        // Track plasma cutting equipment inquiries
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'rental_inquiry', {
+                'event_category': 'plasma_cutting',
+                'event_label': equipmentName,
+                'value': 1
+            });
+        }
+        
+        // Store in localStorage
+        const plasmaInquiries = JSON.parse(localStorage.getItem('plasmaRentalInquiries') || '[]');
+        plasmaInquiries.push({
+            equipment: equipmentName,
+            timestamp: new Date().toISOString(),
+            category: 'plasma-cutting'
+        });
+        localStorage.setItem('plasmaRentalInquiries', JSON.stringify(plasmaInquiries));
+    }
+
+    // Utility function to get plasma-cutting equipment data
+    function getPlasmaCuttingEquipment() {
+        return [
+            {
+                id: 'handheld-plasma',
+                name: 'Handheld Plasma Cutters',
+                category: 'plasma-cutting',
+                dailyRate: 950,
+                weeklyRate: 5200,
+                specs: {
+                    power: '40A-100A',
+                    thickness: 'Up to 25mm',
+                    weight: 'Portable',
+                    voltage: '220V/380V'
+                }
+            },
+            {
+                id: 'cnc-plasma',
+                name: 'CNC Plasma Tables', 
+                category: 'plasma-cutting',
+                dailyRate: 2500,
+                weeklyRate: 12500,
+                specs: {
+                    control: 'CNC',
+                    thickness: 'Up to 50mm',
+                    size: 'Various Sizes',
+                    features: 'Auto Height, Water Table'
+                }
+            },
+            {
+                id: 'fiber-laser',
+                name: 'Fiber Laser Cutters',
+                category: 'plasma-cutting',
+                dailyRate: 3500,
+                weeklyRate: 18000,
+                specs: {
+                    power: '1kW-12kW',
+                    thickness: 'Up to 25mm',
+                    speed: 'High Speed',
+                    efficiency: 'Energy Efficient'
                 }
             }
-            
-            function highlightText(element, searchTerm) {
-                const elements = element.querySelectorAll('h3, p, .rental-specs span');
-                
-                elements.forEach(el => {
-                    const text = el.textContent;
-                    const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, 'gi');
-                    const highlighted = text.replace(regex, '<span class="highlight">$1</span>');
-                    el.innerHTML = highlighted;
-                });
-            }
-            
-            function escapeRegExp(string) {
-                return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            }
-            
-            function resetFilters() {
-                searchInput.value = '';
-                categoryFilter.value = 'all';
-                priceFilter.value = 'all';
-                availabilityFilter.value = 'all';
-                performSearch();
-            }
-        });
-    </script>
+        ];
+    }
+
+    // Initialize the page
+    function initRentalsPage() {
+        console.log('Rentals page initialized with plasma-cutting category');
+        
+        // Check if plasma-cutting section is loaded
+        const plasmaSection = document.getElementById('plasma-cutting-rentals');
+        if (plasmaSection) {
+            console.log('Plasma & Cutting section loaded successfully');
+            console.log('Found', plasmaSection.querySelectorAll('.rental-card').length, 'plasma cutting products');
+        }
+    }
+
+    // Call initialization when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initRentalsPage);
+    } else {
+        initRentalsPage();
+    }
+</script>
 </body>
 </html>

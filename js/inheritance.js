@@ -63,7 +63,7 @@ class PageInheritance {
             <div class="footer-content">
                 <div class="footer-section">
                     <h3><i class="fas fa-building"></i> Wiseten Company</h3>
-                    <p>Wiseten Company is a leading provider of welding and construction equipment with years of industry expertise. We're committed to delivering high-quality products and exceptional service to our clients.</p>
+                    <p>Wiseten Company is a leading provider of welding and industrial equipment with years of industry expertise. We're committed to delivering high-quality products and exceptional service to our clients.</p>
                 </div>
                 <div class="footer-section">
                     <h3><i class="fas fa-address-book"></i> Contact Info</h3>
@@ -80,7 +80,7 @@ class PageInheritance {
                      <p><a href="generators.html" class="generator-link">
                     <i class="fas fa-bolt"></i> Generators
                 </a></p>
-                    <p><i class="fas fa-hard-hat"></i> <a href="products.html#construction">Construction Equipment</a></p>
+                    <p><i class="fas fa-hard-hat"></i> <a href="products.html#construction">industrial Equipment</a></p>
                     <div class="legal-links">
    <p><i class="fas fa-file-contract"></i> <a href="Documents/conditions.pdf" target="_blank">Terms and Conditions</a></p>
 <p><i class="fas fa-user-shield"></i> <a href="Documents/policy.pdf" target="_blank">Privacy Policy</a></p>

@@ -63,7 +63,7 @@ class PageInheritance {
             <div class="footer-content">
                 <div class="footer-section">
                     <h3><i class="fas fa-building"></i> Wiseten Company</h3>
-                    <p>Wiseten Company is a leading provider of welding and industrial equipment with years of industry expertise. We're committed to delivering high-quality products and exceptional service to our clients.</p>
+                    <p> We as Wiseten Company we are are pride ourselves with our service in Welding and industrial equipment since it’s establishment, serving industries across South Africa with reliable solutions and exceptional service.</p>
                 </div>
                 <div class="footer-section">
                     <h3><i class="fas fa-address-book"></i> Contact Info</h3>

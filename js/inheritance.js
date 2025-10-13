@@ -63,7 +63,7 @@ class PageInheritance {
             <div class="footer-content">
                 <div class="footer-section">
                     <h3><i class="fas fa-building"></i> Wiseten Company</h3>
-                    <p> We as Wiseten Company we are are pride ourselves with our service in Welding and industrial equipment since it’s establishment, serving industries across South Africa with reliable solutions and exceptional service.</p>
+                    <p> We as Wiseten Company we are pride ourselves with our service in Welding and industrial equipment since it’s establishment, serving industries across South Africa with reliable solutions and exceptional service.</p>
                 </div>
                 <div class="footer-section">
                     <h3><i class="fas fa-address-book"></i> Contact Info</h3>

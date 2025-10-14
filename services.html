@@ -164,13 +164,21 @@
         </section>
         <div class="contact-book">
       <!-- Left Side: Map -->
+      <!-- Left Side: Map -->
       <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13845.982304251842!2d30.816378!3d-29.821113999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef6feba91a66be3%3A0xe1340425156cdf61!2s85%20Goodwood%20Rd%2C%20Mahogany%20Ridge%2C%20Pinetown%2C%203608!5e0!3m2!1sen!2sza!4v1758593293154!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
       </div>
 
       <!-- Right Side: Form -->
       <div class="form-container">
-        <form id="form">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms Configuration -->
+          <input type="hidden" name="access_key" value="e268f2c4-f5bd-4590-ba4b-b7086a1a59d4">
+          <input type="hidden" name="subject" value="New Contact Form Submission - Wiseten Company">
+          <input type="hidden" name="from_name" value="Wiseten Company Contact Form">
+          <input type="hidden" name="botcheck" value="">
+          <input type="hidden" name="redirect" value="/thank-you.html">
+          
           <div class="field">
             <label for="name">Full Name</label>
             <input type="text" name="name" id="name" placeholder="Enter your full name" required>
@@ -188,7 +196,12 @@
             <label for="message">Message</label>
             <textarea name="message" id="message" placeholder="Write your message here..." required></textarea>
           </div>
-          <input type="submit" id="button" value="Send Email">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">Send Message</span>
+            <span class="loading-spinner"></span>
+          </button>
+          
+          <div id="formMessage" class="form-message"></div>
         </form>
       </div>
     </div>

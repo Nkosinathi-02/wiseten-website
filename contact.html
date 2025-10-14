@@ -5,19 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Wiseten Company</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css"> <!-- Global styles -->
-  <link rel="stylesheet" href="css/contact.css"> <!-- Contact page specific -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
   <link rel="icon" type="image/png" href="images/logo.png">
-
-  <style></style>
 </head>
 <body>
   <!-- Navbar -->
   <div id="navbar-container"></div>
 
   <!-- Main Content -->
-  <!-- Main Content -->
-   
   <main class="main-content">
     <section class="contact-header">
       <strong><h1>Contact Us</h1></strong>
@@ -32,7 +28,14 @@
 
       <!-- Right Side: Form -->
       <div class="form-container">
-        <form id="form">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms Configuration -->
+          <input type="hidden" name="access_key" value="e268f2c4-f5bd-4590-ba4b-b7086a1a59d4">
+          <input type="hidden" name="subject" value="New Contact Form Submission - Wiseten Company">
+          <input type="hidden" name="from_name" value="Wiseten Company Contact Form">
+          <input type="hidden" name="botcheck" value="">
+          <input type="hidden" name="redirect" value="/thank-you.html">
+          
           <div class="field">
             <label for="name">Full Name</label>
             <input type="text" name="name" id="name" placeholder="Enter your full name" required>
@@ -50,7 +53,12 @@
             <label for="message">Message</label>
             <textarea name="message" id="message" placeholder="Write your message here..." required></textarea>
           </div>
-          <input type="submit" id="button" value="Send Email">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span class="btn-text">Send Message</span>
+            <span class="loading-spinner"></span>
+          </button>
+          
+          <div id="formMessage" class="form-message"></div>
         </form>
       </div>
     </div>
@@ -60,14 +68,7 @@
   <div id="footer-container"></div>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="js/inheritance.js"></script>
   <script src="js/contact.js"></script>
-  <script type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script type="text/javascript">
-  emailjs.init('qjGfx8mBOQRwAqx82')
-</script>
 </body>
 </html>

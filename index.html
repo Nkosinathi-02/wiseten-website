@@ -3,425 +3,1174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Pending - WistEn Engineering</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fixed Meta Tags (remove duplicates) -->
+    <meta name="description" content="Wiseten Company stands as a premier provider of welding and industrial equipment, backed by decades of industry expertise. We deliver superior quality products and unparalleled service to clients across manufacturing, infrastructure development, and industrial sectors.">
+    <meta name="keywords" content="Wiseten Engineering Tradings, Engineering tools, Welding Equipment Rentals, welding machine rentals, industrial Equipment Rentals">
+    <meta name="google-site-verification" content="g2TcGbo92OvRPNE92XJ_igPRTkvdVFS4rrGT49T9Y24">
+
+    <title>Wiseten Company - Welding & Industrial Equipment</title>
+    
+    <!-- OPTIMIZED FAVICON LINKS FOR YOUR LOGO -->
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png">
+    <link rel="apple-touch-icon" href="/images/logo.png">
+    
+    <!-- Your CSS files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/Index.css">
+
+    
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #333;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .logo i {
-            color: #3498db;
-        }
-        
-        .tagline {
-            color: #ecf0f1;
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
-        
-        .container {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
+        /* Navbar Search Styles */
+        .nav-search {
             position: relative;
-            overflow: hidden;
+            margin: 0 20px;
+            flex: 0 1 400px;
         }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .search-form {
+            position: relative;
+            width: 80%;
+        }
+
+        .search-input {
             width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c);
-        }
-        
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 2.2rem;
-            font-weight: 600;
-        }
-        
-        .subtitle {
-            color: #7f8c8d;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-        
-        .status-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 25px 0;
-            padding: 15px;
+            padding: 10px 45px 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
             background: #f8f9fa;
-            border-radius: 10px;
         }
-        
-        .status-text {
-            color: #e74c3c;
-            font-size: 1.5rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+
+        .search-input:focus {
+            border-color: #007bff;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
         }
-        
-        .pulse {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #e74c3c;
-            animation: pulse 1.5s infinite;
-        }
-        
-        .spinner-container {
-            margin: 30px auto;
-            width: 120px;
-            height: 120px;
-            position: relative;
-        }
-        
-        .spinner {
-            width: 100%;
-            height: 100%;
-            border: 10px solid #f1f2f6;
-            border-top: 10px solid #3498db;
-            border-radius: 50%;
-            animation: spin 1.5s linear infinite;
-        }
-        
-        .spinner-inner {
+
+        .search-button {
             position: absolute;
+            right: 5px;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            border: 8px solid transparent;
-            border-top: 8px solid #2ecc71;
+            transform: translateY(-50%);
+            background: #007bff;
+            color: white;
+            border: none;
             border-radius: 50%;
-            animation: spin 1s linear infinite reverse;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(0.9);
-                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
-            }
-            
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
-            }
-            
-            100% {
-                transform: scale(0.9);
-                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
-            }
-        }
-        
-        .info-box {
-            background-color: #f8f9fa;
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 20px;
-            text-align: left;
-            border-left: 4px solid #3498db;
-        }
-        
-        .info-box h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .info-box h3 i {
-            color: #3498db;
-        }
-        
-        .info-box p {
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .highlight {
-            background: #fff9e6;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border-left: 4px solid #f1c40f;
-            margin: 15px 0;
-        }
-        
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
+            width: 32px;
+            height: 32px;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: none;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .btn-primary {
-            background-color: #3498db;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
-        
-        .btn-secondary {
-            background-color: #ecf0f1;
-            color: #2c3e50;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #d5dbdb;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
-        }
-        
-        .status-timeline {
-            display: flex;
-            justify-content: space-between;
-            margin: 30px 0;
-            position: relative;
-        }
-        
-        .status-timeline::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 10%;
-            right: 10%;
-            height: 4px;
-            background: #ecf0f1;
-            z-index: 1;
-        }
-        
-        .status-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 2;
-        }
-        
-        .step-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #ecf0f1;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            color: #7f8c8d;
         }
-        
-        .step-1 .step-icon {
-            background: #3498db;
-            color: white;
+
+        .search-button:hover {
+            background: #0056b3;
+            transform: translateY(-50%) scale(1.05);
         }
-        
-        .step-text {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            text-align: center;
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
         }
-        
-        .step-1 .step-text {
-            color: #3498db;
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-result-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-icon {
+            margin-right: 10px;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        .result-content {
+            flex: 1;
+        }
+
+        .result-title {
             font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
         }
-        
-        .contact-info {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #ecf0f1;
+
+        .result-category {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .no-results {
+            padding: 20px;
             text-align: center;
+            color: #666;
+            font-style: italic;
         }
-        
-        .contact-info p {
-            color: #7f8c8d;
-            margin-bottom: 5px;
+
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
         }
-        
-        .contact-info a {
-            color: #3498db;
-            text-decoration: none;
+
+        .search-overlay.active {
+            display: block;
         }
-        
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-            }
-            
-            .status-timeline {
-                flex-direction: column;
-                gap: 25px;
-            }
-            
-            .status-timeline::before {
-                display: none;
-            }
-        }
+
+        /* Background Image and Overlay Styles */
+.main-content-wrapper {
+    background: 
+        linear-gradient(
+            135deg,
+            rgba(146, 152, 158, 0.97) 0%,
+            rgba(248, 249, 250, 0.95) 50%,
+            rgba(104, 146, 152, 0.97) 100%
+        ),
+        url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.main-content-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 119, 198, 0.1) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 119, 198, 0.1) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 40% 40%,
+            rgba(120, 219, 255, 0.15) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+}
+
+/* Remove all white spaces and create seamless flow */
+.hero {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.featured {
+    background: transparent;
+    padding: 60px 0 40px 0; /* Reduced top and bottom padding */
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.featured .container {
+    background: transparent;
+    padding: 0;
+}
+
+.featured h2 {
+    color: #2c3e50;
+    margin-bottom: 40px; /* Reduced margin */
+    text-align: center;
+    font-size: 2.5rem; /* Slightly smaller */
+    font-weight: 700;
+    position: relative;
+}
+
+.featured h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px; /* Adjusted position */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* Smaller line */
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #00b3ff);
+    border-radius: 2px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 30px; /* Reduced gap */
+    margin-top: 20px; /* Reduced margin */
+}
+
+.service-card {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    padding: 35px 30px; /* Reduced padding */
+    border-radius: 16px; /* Slightly smaller radius */
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px; /* Thinner line */
+    background: linear-gradient(90deg, #007bff, #00b3ff, #007bff);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.02); /* Reduced lift */
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.12),
+        0 5px 15px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.service-card i {
+    font-size: 3.2rem; /* Slightly smaller */
+    margin-bottom: 20px; /* Reduced margin */
+    background: linear-gradient(135deg, #007bff, #00b3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(0, 123, 255, 0.2));
+}
+
+.service-card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px; /* Reduced margin */
+    font-size: 1.6rem; /* Slightly smaller */
+    font-weight: 700;
+    position: relative;
+}
+
+.service-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; /* Adjusted position */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px; /* Smaller line */
+    height: 2px;
+    background: linear-gradient(90deg, #007bff, #00b3ff);
+    border-radius: 1px;
+}
+
+.service-card p {
+    color: #5a6c7d;
+    line-height: 1.6; /* Tighter line height */
+    margin-bottom: 20px; /* Reduced margin */
+    font-size: 1rem; /* Slightly smaller */
+}
+
+.service-link {
+    display: inline-block;
+    padding: 12px 32px; /* Slightly smaller */
+    background: linear-gradient(135deg, #007bff, #00b3ff);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px; /* Slightly smaller */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Reduced letter spacing */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9rem; /* Slightly smaller */
+}
+
+.service-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.service-link:hover {
+    background: transparent;
+    border-color: #007bff;
+    color: #007bff;
+    transform: translateY(-2px); /* Reduced lift */
+    box-shadow: 0 6px 18px rgba(0, 123, 255, 0.35);
+}
+
+.service-link:hover::before {
+    left: 100%;
+}
+
+/* About Preview Section - Reduced Gaps */
+.about-preview {
+    background: transparent;
+    padding: 50px 0 40px 0; /* Significantly reduced padding */
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.about-preview .container {
+    background: transparent;
+    padding: 0;
+    text-align: center;
+}
+
+.about-preview h2 {
+    color: #2c3e50;
+    margin-bottom: 25px; /* Reduced margin */
+    font-size: 2.5rem; /* Slightly smaller */
+    font-weight: 700;
+    position: relative;
+}
+
+.about-preview h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px; /* Adjusted position */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* Smaller line */
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #00b3ff);
+    border-radius: 2px;
+}
+
+.about-preview p {
+    color: #5a6c7d;
+    font-size: 1.1rem; /* Slightly smaller */
+    line-height: 1.6; /* Tighter line height */
+    max-width: 800px; /* Slightly narrower */
+    margin: 0 auto 30px; /* Reduced bottom margin */
+}
+
+.learn-more {
+    display: inline-block;
+    padding: 12px 35px; /* Slightly smaller */
+    background: linear-gradient(135deg, #007bff, #00b3ff);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px; /* Slightly smaller */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.5px; /* Reduced letter spacing */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9rem; /* Slightly smaller */
+}
+
+.learn-more::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.learn-more:hover {
+    background: transparent;
+    border-color: #007bff;
+    color: #007bff;
+    transform: translateY(-2px); /* Reduced lift */
+    box-shadow: 0 6px 18px rgba(0, 123, 255, 0.35);
+}
+
+.learn-more:hover::before {
+    left: 100%;
+}
+
+/* Testimonials Section - Reduced Gaps */
+.testimonials {
+    background: transparent;
+    padding: 50px 0 60px 0; /* Significantly reduced padding */
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonials h2 {
+    color: #2c3e50;
+    margin-bottom: 40px; /* Reduced margin */
+    text-align: center;
+    font-size: 2.5rem; /* Slightly smaller */
+    font-weight: 700;
+    position: relative;
+}
+
+.testimonials h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px; /* Adjusted position */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* Smaller line */
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #00b3ff);
+    border-radius: 2px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly smaller min-width */
+    gap: 25px; /* Reduced gap */
+    margin-top: 30px; /* Reduced margin */
+}
+
+.testimonial-card {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    padding: 35px 30px; /* Reduced padding */
+    border-radius: 16px; /* Slightly smaller radius */
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 3px solid #007bff; /* Thinner border */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-6px) scale(1.01); /* Reduced lift */
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.12),
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.testimonial-card i {
+    color: #007bff;
+    font-size: 1.8rem; /* Slightly smaller */
+    margin-bottom: 20px; /* Reduced margin */
+    filter: drop-shadow(0 2px 4px rgba(0, 123, 255, 0.2));
+}
+
+.testimonial-card p {
+    color: #5a6c7d;
+    line-height: 1.6; /* Tighter line height */
+    font-style: italic;
+    margin-bottom: 20px; /* Reduced margin */
+    font-size: 1rem; /* Slightly smaller */
+    position: relative;
+}
+
+.testimonial-card p::before,
+.testimonial-card p::after {
+    content: '"';
+    color: #007bff;
+    font-size: 1.3em; /* Slightly smaller */
+    font-weight: bold;
+}
+
+.testimonial-author {
+    margin-top: 20px; /* Reduced margin */
+    border-top: 1px solid #e9ecef;
+    padding-top: 20px; /* Reduced padding */
+}
+
+.testimonial-author strong {
+    display: block;
+    color: #2c3e50;
+    font-size: 1.1rem; /* Slightly smaller */
+    margin-bottom: 4px; /* Reduced margin */
+    font-weight: 600;
+}
+
+.testimonial-author span {
+    color: #7f8c8d;
+    font-size: 0.95em; /* Slightly smaller */
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 768px) {
+    .nav-search {
+        order: 3;
+        flex: 1 1 100%;
+        margin: 10px 0;
+        max-width: 100%;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    .nav-search {
+        margin: 10px 15px;
+    }
+
+    .main-content-wrapper {
+        background-attachment: scroll;
+    }
+
+    .featured {
+        padding: 40px 0 30px 0; /* Further reduced for mobile */
+    }
+
+    .featured h2,
+    .about-preview h2,
+    .testimonials h2 {
+        font-size: 2rem; /* Smaller for mobile */
+        margin-bottom: 25px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px; /* Tighter gap for mobile */
+    }
+
+    .service-card {
+        padding: 25px 20px; /* More compact for mobile */
+    }
+
+    .service-card i {
+        font-size: 2.5rem;
+    }
+
+    .about-preview {
+        padding: 40px 0 30px 0; /* More compact for mobile */
+    }
+
+    .about-preview p {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .testimonials {
+        padding: 40px 0 50px 0; /* More compact for mobile */
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px; /* Tighter gap for mobile */
+    }
+
+    .testimonial-card {
+        padding: 25px 20px; /* More compact for mobile */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search-input {
+        font-size: 16px;
+    }
+
+    .featured h2,
+    .about-preview h2,
+    .testimonials h2 {
+        font-size: 1.7rem;
+    }
+
+    .service-card {
+        padding: 20px 15px;
+    }
+
+    .service-card i {
+        font-size: 2.2rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .service-card p,
+    .testimonial-card p,
+    .about-preview p {
+        font-size: 0.95rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
     </style>
 </head>
+<!-- Add this right before closing </head> tag -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Wiseten Engineering Tradings",
+  "url": "https://wte-wiseten.com",
+  "logo": "https://wte-wiseten.com/images/logo.png",
+  "description": "Premier provider of welding and industrial equipment",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Durban",
+    "addressCountry": "South Africa"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "076-731-9073",
+    "contactType": ""Premier provider of welding and industrial equipment"
+  }
+}
+</script>
 <body>
-    <div class="header">
-        <div class="logo">
-            <i class="fas fa-cogs"></i>
-           Wiseten Engineering
-        </div>
-        <p class="tagline">Precision Engineering Solutions</p>
-    </div>
-    
-    <div class="container">
-        <h1>Project Delivery Status</h1>
-        <p class="subtitle">Wiseten Engineering  Website</p>
-        
-        <div class="status-container">
-            <div class="status-text">
-                <span class="pulse"></span>Pending Payment
+    <!-- NAVBAR (Hardcoded - No JavaScript loading) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Wiseten Company Logo" class="logo-img">
+                    <span class="company-name">WISETEN</span>
+                </a>
             </div>
-        </div>
-        
-        <div class="spinner-container">
-            <div class="spinner"></div>
-            <div class="spinner-inner"></div>
-        </div>
-        
-        <div class="status-timeline">
-            <div class="status-step step-1">
-                <div class="step-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <div class="step-text">Development Complete</div>
-            </div>
-            <div class="status-step">
-                <div class="step-icon">
-                    <i class="fas fa-money-bill-wave"></i>
-                </div>
-                <div class="step-text">Awaiting Payment</div>
-            </div>
-            <div class="status-step">
-                <div class="step-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <div class="step-text">Website Delivery</div>
-            </div>
-        </div>
-        
-        <div class="info-box">
-            <h3><i class="fas fa-info-circle"></i> Project Status</h3>
-            
 
-            <p>The Tech Ventage Solutions Company has been completed the website according to specifications and is ready for delivery.</p>
-            
-            <div class="highlight">
-                <p><strong>Note:</strong> The completed website will be transferred to your hosting environment once the outstanding payment has been processed.</p>
+            <!-- Search Bar -->
+            <div class="nav-search">
+                <form class="search-form" id="navbarSearchForm">
+                    <input type="text" class="search-input" id="navbarSearchInput" placeholder="Search all products...">
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <div class="search-results" id="searchResults"></div>
             </div>
-            
-            <p>We appreciate your business and look forward to completing this transaction. If you have any questions about the payment process, please don't hesitate to contact us.</p>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="rentals.html" class="nav-link">Rentals</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
-        
-        <div class="action-buttons">
-            <button class="btn btn-primary">
-                <i class="fas fa-sync-alt"></i> Check Payment Status
-            </button>
-        
-        </div>
-        
-        <div class="contact-info">
-            <p>Need assistance? Contact our accounts department:</p>
-            <p><i class="fas fa-phone"></i> <a href="tel:076-731-9073">(0767319073)</a> | 
-               <i class="fas fa-envelope"></i> <a href="mailto:Techventagesolutions@gmail.com">Techventagesolutions@gmail.com</a></p>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay"></div>
+
+    <!-- Main Content with Background Image and Subtle Overlay -->
+    <div class="main-content-wrapper">
+        <!-- Hero Section with Slider -->
+        <section class="hero">
+            <div class="hero-slider">
+                <!-- Slide 1: Welding Equipment -->
+                <div class="slide active">
+                    <img src="images/home/WhatsApp Image 2025-10-07 at 10.16.52.jpeg" alt="Welding Equipment">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Welding Equipment Rentals</h1>
+                        <p><strong>MIG and TIG welding machine rentals, plasma and laser cutting equipment rentals</strong></p>
+                        <a href="services.html#welding" class="cta-button">Explore Welding Equipment</a>
+                    </div>
+                </div>
+                <div class="slide active">
+                    <img src="images/home/WhatsApp Image 2025-10-07 at 10.17.28.jpeg" alt="Welding Equipment">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Welding Equipment Rentals</h1>
+                        <p><strong>MIG and TIG welding machine rentals, plasma and laser cutting equipment rentals</strong></p>
+                        <a href="services.html#welding" class="cta-button">Explore Welding Equipment</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 2: Construction Equipment -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Construction Equipment">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>industrial Equipment Rentals</h1>
+                        <p><strong>Generators and power generation equipment, compressors and pneumatic tools</strong></p>
+                        <a href="services.html#construction" class="cta-button">Explore Construction Equipment</a>
+                    </div>
+                </div>
+                
+                <!-- Slide 3: Both Services -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Industrial Equipment">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Premium Equipment Solutions</h1>
+                        <p><strong>Your trusted partner for welding and industrial equipment rentals and sales</strong></p>
+                        <a href="products.html" class="cta-button">View All Products</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-dot active" data-slide="0"></button>
+                <button class="slider-dot" data-slide="1"></button>
+                <button class="slider-dot" data-slide="2"></button>
+            </div>
+        </section>
+        <!-- Brands Section -->
+<section class="brands-section">
+    <div class="container">
+        <h2>Trusted by Industry Leaders</h2>
+        <div class="brands-carousel">
+            <div class="brands-track">
+                <div class="brand-item">
+                    <img src="images/brands/hypertherm-logo.png" alt="Hypertherm">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/miller-logo.png" alt="Miller">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/kemppi-logo.png" alt="Kemppi">
+                </div>
+               
+                <div class="brand-item">
+                    <img src="images/brands/unipower-logo.webp" alt="Unipower">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/Harris-logo.png" alt="Harris">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/Parweld-XP8-logo.jpg" alt="Parweld">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/Promotech-logo.jpg" alt="Promotech">
+                </div>
+                <!-- Duplicate items for seamless loop -->
+                <div class="brand-item">
+                    <img src="images/brands/hypertherm-logo.png" alt="Hypertherm">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/miller-logo.png" alt="Miller">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/kemppi-logo.png" alt="Kemppi">
+                </div>
+                
+                <div class="brand-item">
+                    <img src="images/brands/unipower-logo.webp" alt="Unipower">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/Harris-logo.png" alt="Harris">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/Parweld-XP8-logo.jpg" alt="Parweld">
+                </div>
+                <div class="brand-item">
+                    <img src="images/brands/Promotech-logo.jpg" alt="Promotech">
+                </div>
+            </div>
         </div>
     </div>
+</section>
+
+        <!-- Featured Products/Services -->
+        <section class="featured">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-wrench"></i>
+                        <h3>Welding Equipment Rentals</h3>
+                        <p>Professional MIG and TIG welding machine rentals, plasma and laser cutting equipment. State-of-the-art equipment maintained to the highest standards for all your industrial welding needs.</p>
+                        <a href="services.html#welding" class="service-link">Learn More</a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-hard-hat"></i>
+                        <h3>industrial Equipment Rentals</h3>
+                        <p>High-performance generators, power generation equipment, compressors and pneumatic tools. Reliable equipment that keeps your industrial projects running smoothly.</p>
+                        <a href="services.html#construction" class="service-link">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us -->
+        <section class="about-preview">
+            <div class="container">
+                <div class="about-content">
+                    <h2>About Wiseten Company</h2>
+                    <p>Wiseten Company stands as a premier provider of welding and industrial equipment, backed by decades of industry expertise. We are dedicated to delivering superior quality products and unparalleled service to our valued clients across, manufacturing, infrastructure development, and industrial sectors.</p>
+                    <a href="about.html" class="learn-more">Learn More About Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Wiseten provided us with reliable equipment that helped complete our project on time. Their professional service and quality equipment made all the difference. Highly recommended for any industrial project!</p>
+                        <div class="testimonial-author">
+                            <strong>John D.</strong>
+                            <span>Construction Manager</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Excellent service and top-quality welding equipment. Their team is knowledgeable and responsive. We've been using their services for over 3 years and couldn't be happier with the consistent quality.</p>
+                        <div class="testimonial-author">
+                            <strong>Sarah M.</strong>
+                            <span>Fabrication Specialist</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The generator rentals saved our industrial site during power outages. Professional and reliable service with quick response times. Will definitely work with them again on future projects.</p>
+                        <div class="testimonial-author">
+                            <strong>Mike T.</strong>
+                            <span>Site Supervisor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer - No Background Image -->
+     <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-building"></i> Wiseten Company</h3>
+                    <p> We as Wiseten Company we pride  ourselves with our service in Welding and industrial equipment since it’s establishment, serving industries across South Africa with reliable solutions and exceptional service.</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-address-book"></i> Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> <a href="tel:0840262830">Phone: 0840262830/ 0615493309</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@wte-wiseten.com.com">Email: info@wte-wiseten.com</a></p
+                    <p><i class="fas fa-map-marker-alt"></i> Address: 85 Goodwood Road West Mead, Pinetown 3609</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Richards Bay - Ceramic Curve 20 Richard’s Bay , KwaZulu Natal 3900</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-tools"></i> Our Products</h3>
+                    <p><i class="fas fa-bolt"></i> <a href="welding.html">Welding Equipment</a></p>
+                    <p><i class="fas fa-gas-pump"></i> <a href="gas-equipment.html">Gas Equipment</a></p>
+                     <p><a href="generators.html" class="generator-link">
+                    <i class="fas fa-bolt"></i> Generators
+                </a></p>
+                    <p><i class="fas fa-hard-hat"></i> <a href="products.html#construction">industrial Equipment</a></p>
+                    <div class="legal-links">
+   <p><i class="fas fa-file-contract"></i> <a href="Documents/conditions.pdf" target="_blank">Terms and Conditions</a></p>
+<p><i class="fas fa-user-shield"></i> <a href="Documents/policy.pdf" target="_blank">Privacy Policy</a></p>
+    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-clock"></i> Operating Hours</h3>
+                    <p><i class="fas fa-calendar-alt"></i> Monday - Friday: 07:30 - 16:30</p>
+                    <p><i class="fas fa-calendar-alt"></i> Saturday - Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><i class="fas fa-copyright"></i> 2025 Wiseten Company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Add interactivity to buttons
-        document.querySelector('.btn-primary').addEventListener('click', function() {
-            alert('Payment status checked. The payment is still pending.');
-        });
-        
-        document.querySelector('.btn-secondary').addEventListener('click', function() {
-            alert('Please contact our accounts department at Techventagesolutions@gmail.com or call 076-731-9073');
+        // Navbar Search Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchForm = document.getElementById('navbarSearchForm');
+            const searchInput = document.getElementById('navbarSearchInput');
+            const searchResults = document.getElementById('searchResults');
+            const searchOverlay = document.getElementById('searchOverlay');
+
+            // Sample product database
+            const products = [
+                {
+                    name: "MIG/MAG Welders",
+                    category: "Welding Equipment",
+                    page: "welding.html",
+                    icon: "fas fa-bolt",
+                    description: "200A-500A capacity for various applications"
+                },
+                {
+                    name: "TIG Welders",
+                    category: "Welding Equipment",
+                    page: "welding.html",
+                    icon: "fas fa-bolt",
+                    description: "Precision welding for stainless steel and aluminum"
+                },
+                {
+                    name: "Plasma Cutters",
+                    category: "Welding Equipment",
+                    page: "plasma-laser.html",
+                    icon: "fas fa-cut",
+                    description: "Handheld plasma cutting up to 25mm thickness"
+                },
+                {
+                    name: "Engine Driven Welders",
+                    category: "Welding Equipment",
+                    page: "welding.html",
+                    icon: "fas fa-gas-pump",
+                    description: "Portable welding with integrated generator"
+                },
+                {
+                    name: "Oxygen Regulators",
+                    category: "Gas Equipment",
+                    page: "gas-equipment.html",
+                    icon: "fas fa-wind",
+                    description: "High-pressure oxygen regulators for welding and cutting"
+                },
+                {
+                    name: "Acetylene Regulators",
+                    category: "Gas Equipment",
+                    page: "gas-equipment.html",
+                    icon: "fas fa-fire",
+                    description: "Medium-pressure acetylene regulators for fuel gas control"
+                },
+                {
+                    name: "Flashback Arrestors",
+                    category: "Gas Equipment",
+                    page: "gas-equipment.html",
+                    icon: "fas fa-shield-alt",
+                    description: "Essential safety devices for gas welding systems"
+                },
+                {
+                    name: "Diesel Generators",
+                    category: "Generators",
+                    page: "generators.html",
+                    icon: "fas fa-bolt",
+                    description: "50kVA-2000kVA for industrial applications"
+                },
+                {
+                    name: "Silent Generators",
+                    category: "Generators",
+                    page: "generators.html",
+                    icon: "fas fa-volume-mute",
+                    description: "Quiet operation for urban areas"
+                },
+                {
+                    name: "Inverter Generators",
+                    category: "Generators",
+                    page: "generators.html",
+                    icon: "fas fa-wave-square",
+                    description: "Clean power for sensitive electronics"
+                },
+                {
+                    name: "Handheld Bevellers",
+                    category: "Bevelling Equipment",
+                    page: "bevelling.html",
+                    icon: "fas fa-ruler",
+                    description: "Lightweight portable bevellers for edge preparation"
+                },
+                {
+                    name: "Pipe Bevelling Machines",
+                    category: "Bevelling Equipment",
+                    page: "bevelling.html",
+                    icon: "fas fa-pipe",
+                    description: "Specialized equipment for pipe end preparation"
+                },
+                {
+                    name: "Portable Plate Bevellers",
+                    category: "Bevelling Equipment",
+                    page: "bevelling.html",
+                    icon: "fas fa-weight",
+                    description: "Heavy-duty portable machines for steel plates"
+                },
+                {
+                    name: "Drills & Drivers",
+                    category: "Power Tools",
+                    page: "tools-ppe.html",
+                    icon: "fas fa-tools",
+                    description: "Cordless and corded drills for various applications"
+                },
+                {
+                    name: "Grinders & Sanders",
+                    category: "Power Tools",
+                    page: "tools-ppe.html",
+                    icon: "fas fa-tools",
+                    description: "Angle grinders and sanding tools for metalworking"
+                },
+                {
+                    name: "Safety Helmets",
+                    category: "PPE",
+                    page: "tools-ppe.html",
+                    icon: "fas fa-hard-hat",
+                    description: "ANSI certified safety helmets and hard hats"
+                },
+                {
+                    name: "Welding Safety Equipment",
+                    category: "PPE",
+                    page: "tools-ppe.html",
+                    icon: "fas fa-mitten",
+                    description: "Complete welding safety gear and protective equipment"
+                }
+            ];
+
+            // Search functionality
+            function performSearch(searchTerm) {
+                const results = products.filter(product => {
+                    const searchText = (product.name + ' ' + product.category + ' ' + product.description).toLowerCase();
+                    return searchText.includes(searchTerm.toLowerCase());
+                });
+
+                displayResults(results);
+            }
+
+            function displayResults(results) {
+                searchResults.innerHTML = '';
+
+                if (results.length === 0) {
+                    searchResults.innerHTML = '<div class="no-results">No products found matching your search</div>';
+                } else {
+                    results.forEach(product => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'search-result-item';
+                        resultItem.innerHTML = `
+                            <i class="${product.icon} result-icon"></i>
+                            <div class="result-content">
+                                <div class="result-title">${product.name}</div>
+                                <div class="result-category">${product.category}</div>
+                            </div>
+                        `;
+                        
+                        resultItem.addEventListener('click', function() {
+                            window.location.href = product.page;
+                        });
+                        
+                        searchResults.appendChild(resultItem);
+                    });
+                }
+
+                searchResults.classList.add('active');
+                searchOverlay.classList.add('active');
+            }
+
+            // Event listeners
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    performSearch(searchTerm);
+                }
+            });
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm.length >= 2) {
+                    performSearch(searchTerm);
+                } else {
+                    searchResults.classList.remove('active');
+                    searchOverlay.classList.remove('active');
+                }
+            });
+
+            searchInput.addEventListener('focus', function() {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm.length >= 2) {
+                    searchResults.classList.add('active');
+                    searchOverlay.classList.add('active');
+                }
+            });
+
+            // Close search results when clicking outside
+            searchOverlay.addEventListener('click', function() {
+                searchResults.classList.remove('active');
+                searchOverlay.classList.remove('active');
+            });
+
+            // Close search results on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    searchResults.classList.remove('active');
+                    searchOverlay.classList.remove('active');
+                    searchInput.blur();
+                }
+            });
+
+            // Handle window resize for mobile
+            window.addEventListener('resize', function() {
+                if (window.innerWidth <= 768) {
+                    searchResults.style.width = '100%';
+                    searchResults.style.left = '0';
+                }
+            });
         });
     </script>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/testimonials.js"></script>
 </body>
 </html>
